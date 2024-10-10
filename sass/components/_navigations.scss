@@ -1,0 +1,243 @@
+@import "_variables.scss";
+
+/* Navbar */
+.brand-logo{
+    padding-left: 16px;
+    text-transform: uppercase;
+    color: $standart-color;
+    & img {
+        height: 45px;
+    }
+}
+.navbar{
+    box-shadow: $bshd;
+}
+.navbar__wrap{
+    display: $dsp;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%; 
+}
+ul.navbar__menu {
+    & li{
+    display: inline-block;
+    position: relative;
+    margin: 0 -3px 0 -3px;
+    & a{
+    display: block;
+    padding: 25px 30px;
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+    }
+    & ul.dropdown {  
+       position: absolute;
+       z-index: 9;
+       display: none;
+       transition: all 0.3s;
+    }
+    & a:hover{
+       background: $standart-color;
+       color: #FFF;
+       transition: all 0.3s;
+    } 
+    & a.active{
+       background-color: $standart-color;
+       color: #FFF;
+    }
+    & a.active:hover{
+       background-color: $active-color;
+    } 
+    }
+    & ul.dropdown {
+       background: #FFF;
+
+       & li {
+          display: block;
+          padding: 0 -3px 0 -3px;
+       }
+    }
+    & li:hover {
+        & ul.dropdown {
+    display: block;
+        }
+    }
+  
+}
+.navbar-burger{
+    padding-right: 1em;
+    display: none;
+}
+ul.navbar-toggle{
+    display: none;
+    width: 100%;
+    background: #FFF;
+    text-align: center;
+    z-index: 5;
+    
+    & li { 
+        height: 2.5em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all .5s ease;
+        &:hover{
+                background: $standart-color;
+                & a{
+                  color: #FFF;   
+                }       
+            }
+        & a{
+            font-size: 1em;
+            text-transform: uppercase;   
+        }
+    }
+}
+@media screen and (max-width: 540px){
+     .navbar__menu{
+        display: none;
+    }
+     .navbar-burger{
+        display: inline;
+    }
+     .navbar__wrap{
+        padding: 20px 0 20px 0;
+    }
+}
+
+/* Breadcrumbs */
+.breadcrumb__wrap {
+    display: $dsp;
+    flex-direction: row;
+    align-items: center;
+    padding: 16px; 
+}
+.breadcrumb__link {
+    display: $dsp;
+    flex-direction: row;
+    align-items: center; 
+}
+.bredcrumb__label {
+    font-weight: $bold;
+    font-size: 16px;
+    line-height: $lh;
+    display: $dsp;
+    align-items: center;
+    color: $standart-color;
+}
+.breadcrumb__link_active {
+   & .bredcrumb__label{
+    color: $active-color;
+   }
+   & i{
+    color: $active-color;
+   }
+}
+
+/* Mobile Nav */
+.horisontal {
+    box-sizing: border-box;
+ }
+ .horisontal__wrap {
+     display: $dsp;
+     flex-direction: row;
+     justify-content: start;
+    
+ }
+ .horisontal__item {
+     display: $dsp;
+     flex-direction: $fd;
+     align-items: center;
+     justify-content: center;
+     height: 60px;
+     width: 100px;
+     border-top: 3px solid $border-color;
+    
+ }
+ .horisontal__item:hover{
+     background: $active-bg;
+     border-color: $active-color;
+     color: $active-color;
+ }
+ .horisontal__item_active{
+     color: $active-color;
+     border-top: 3px solid $active-color;
+ }
+ .horisontal__item_active:hover{
+     background: $active-color;
+     border-top: 3px solid $active-color;
+     color: #FFFFFF;
+     transition: all .5s ease-in;
+ }
+
+/* Sidenav  */
+.sidenav {
+    box-sizing: border-box;
+    box-shadow: $bshd;
+ }
+ .sidenav__wrap {
+     display: $dsp;
+     flex-direction: $fd;
+     justify-content: center;
+     align-items: flex-end;
+ }
+ .sidenav__item {
+     display: $dsp;
+     flex-direction: row;
+     justify-content: center;
+     align-items: center;
+     text-align: center;
+     width: 100%;
+     height: 48px;
+     border-right: 3px solid $border-color;
+     &:hover{
+        background: lavender;
+        transition: all 0.5s;
+     }
+ }
+ .sidenav__item_active{
+    border-color: $active-color;
+    color: $active-color;
+    background-color: $active-bg;
+ }
+
+/* Pagination */
+@mixin frow{
+    display: $dsp;
+    flex-direction: row;
+    align-items: center; 
+}
+.paging{
+    @include frow;
+    gap: 2px;
+}
+.paging__frame{
+    @include frow;
+    gap: 2px;
+}
+.paging__item{
+    @include frow;
+    justify-content: space-around;
+    padding: 0px;
+    width: 50px;
+    height: 50px;
+    background-color: #FFFFFF;
+    box-shadow: $bshd;
+    border-radius: 4px;
+    &:hover{
+      background: $active-bg;
+   }
+}
+
+.paging__item_active{
+    background: $standart-color;
+    color: #FFFFFF; 
+    &:hover{
+    background: $active-color;
+    }
+}
+.paging-icon{
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 28px;
+}

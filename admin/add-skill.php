@@ -9,13 +9,15 @@ header('Location: index.php');
 
 require_once 'config/connect.php';
 include_once 'objects/resume.php';
-include_once 'objects/get-date.php';
+include_once 'objects/skills-info.php';
 
 $database = new Connect;
 $db = $database->getConnect();
 
 $resume = new Resume($db);
 $res = $resume->readInfo();
+
+$skills = new Skills($db);
 
 ?>
 
@@ -24,7 +26,7 @@ $res = $resume->readInfo();
 $row = $res->fetch(PDO::FETCH_ASSOC);
 extract($row);
 
-$title_page = "Опыт работы";
+$title_page = htmlspecialchars($row['profession']) . ' | ' . ' Добавление навыка';
 
 ?>
 
@@ -61,33 +63,21 @@ include_once 'layout-head.php';
                   </a>
                 </li>
                 <li>
-                  <a class="nav-list_item active" href="#">
+                  <a class="nav-list_item" href="#">
                     <i class="icofont-brand-wordpress"></i>
-                    Опыт работы <i class="icofont-simple-right"></i>
+                    Опыт работы 
                   </a>
                 </li>
                 <li>
                   <a class="nav-list_item" href="skills.php">
                     <i class="icofont-key"></i>
-                    Ключевые навыки
+                    Ключевые навыки 
                   </a>
                 </li>
                 <li>
-                  <a class="nav-list_item" href="education.php">
+                  <a class="nav-list_item active" href="#">
                     <i class="icofont-university"></i>
-                    Образование
-                  </a>
-                </li>
-                <li>
-                  <a class="nav-list_item" href="#">
-                    <i class="icofont-bag-alt"></i>
-                    Портфолио
-                  </a>
-                </li>
-                <li>
-                  <a class="nav-list_item" href="#">
-                    <i class="icofont-ui-message"></i>
-                    Мои Приглашения
+                   Добавление навыка <i class="icofont-simple-right"></i>
                   </a>
                 </li>
                 <li class="divider"></li>
@@ -109,115 +99,61 @@ include_once 'layout-head.php';
 
           <div class="col l9 s12">
 
-          <?php  
-
-          $dt = new GetDate();
-
-          $experinces = $resume->readExperience();
-          $count = $resume->countExperience();
-          ?>   
+    
             <section class="main-content">
               
         
               <div class="col l10 s12">
+              <?php 
+      
+      if($_POST)
+      {
+        $skills->icon = htmlentities($_POST["icon"]);
+        $skills->title = htmlentities($_POST["title-skill"]);
+        $skills->description = htmlentities($_POST["descript"]);
 
-               <div class="card">
-                  <div class="card-content">
-                    <span class="card-title">Добавить Опыт работы</span>
-                    <a href="add-work.php" class="btn-floating btn-large blue waves-effect"><i
-                        class="material-icons">add</i></a>
-                  </div>
-               </div> 
-
- <?php 
- if($count > 0){
-  while($exp = $experinces->fetch(PDO::FETCH_ASSOC)){
-
-    $podate = $exp['period'];
-    $endate = $exp['period_end'];
-
-    $y = $dt->getYear($podate);
-    $m = $dt->getMonth($podate);
-    $d = $dt->getDay($podate);
-    $yeval = $dt->getAge($y, $m, $d);
-    $mval = (12 - $m) + date('m');
-    
-    $endt = explode("-", $endate);
-    $yend = $endt[0];
-    $endmonth = $endt[1];
-    $endday = $endt[2];
-    
-    $endmval = $endmonth - $m;
-
-     extract($exp);
-
-  echo '<div class="card hoverable">
-         <div class="card-content">';
-  echo "<b class='card-title'> {$comps} </b>";
-  echo "<h5>
-          {$prof}
-        </h5>";
-  echo "<blockquote>
-         {$descs}
-        </blockquote>
-       <br>";
-  echo '<span class="red-text accent-2" >';
-  echo "{$period}"." - ";
-       if($exp['period_end'] == Null)
-       {
-        echo "По сей день(Авось и ныне там 😅)";
-        echo "<br>
-              <h6>
-              <b class='purple-text lighten-3'>";
-              if($yeval > 1){
-                echo $mval . " Monthes";
-              }
-              else {
-                 echo $yeval." Years " . $mval . " Monthes";
-              }
-        echo "</b>
-              </h6>";
-       }
-
-       else {
-        echo "{$period_end}";
-        echo "<br>
-              <h6>
-              <b class='purple-text lighten-3'>";
-        echo   $yend - $y ." Years " . $endmval . " Monthes";
-        echo "</b>
-              </h6>";
-
+        if($skills->addSkill())
+          {
+            echo '<script>
+                   var toastHTML = "<h1>Ключевой навык добавлен!</h1>";
+                   M.toast({html: toastHTML});
+                 </script>';
+          }
+          else {
+            echo "<div class='alert-danger red z-depth-2'>Навык не был добавлен!</div>";
+          }
       }
-  echo "</span>";
-       
-  echo "</span>
-  </div>";
 
-echo "<div class='card-action'>
-    <a href='redact-work.php?id={$id}'>
-    <i class='icofont-pencil-alt-5'></i>
-      Редактировать
-    </a>
-    <a delete-id='{$id}' class='red-text lighten-2 delete'>
-    <i class='icofont-ui-delete'></i>
-      Удалить
-    </a>
-  </div>
-</div>"; 
-  }
- }
- else{
-  echo '<div class="card">
-          <div class="card-content">
-              <span class="card-title">Опыт работы отсутсвует</span>
-         </div>
-        </div> ';
- }
- ?>              
-              
 
-                
+    ?>
+              <div class="card">
+                <div class="card-content">
+        <span class="card-title">Добавление навыка</span>
+        <form class="row" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
+          <div class="input-field col l10 s12">
+            <i class="icofont-brand-icofont prefix"></i>
+            <input class="resume" type="text" name="icon">
+            <label for="">Иконка навыка Icofont</label>
+          </div>
+          <div class="input-field col l10 s12">
+            <i class="icofont-key prefix"></i>
+            <input class="resume" type="text" name="title-skill">
+            <label for="">Ключевой Навык</label>
+          </div>
+          <div class="input-field col l10 s12">
+            <i class="icofont-drawing-tablet prefix"></i>
+            <input class="resume" type="text" name="descript">
+            <label for="">Описание Навыка</label>
+          </div>
+          <div class="input-field col l10 s12">
+            <button type="submit" class="btn btn-large waves-effect waves-light">
+            Добавить
+           </button>
+          </div>
+         
+        </form>
+                </div>
+              </div>
 
           </div>
 
@@ -231,6 +167,7 @@ echo "<div class='card-action'>
 <?php
  include_once 'layout-script.php';
 ?>
+
   <script>
     // JavaScript для удаления товара
     $(document).on("click", ".delete", function() {
@@ -252,7 +189,7 @@ echo "<div class='card-action'>
             },
             callback: function(result) {
                 if (result == true) {
-                    $.post("delete-exp.php", {
+                    $.post("objects/delete-skill.php", {
                         object_id: id
                     }, function(data) {
                         location.reload();

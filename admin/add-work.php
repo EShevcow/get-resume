@@ -114,30 +114,7 @@ session_start();
            Добавление Опыта работы <i class="icofont-simple-right"></i>
               </a>
             </li>
-            <li>
-              <a class="nav-list_item" href="#">
-               <i class="icofont-key"></i>
-                Ключевые навыки
-              </a>
-            </li>
-            <li>
-              <a class="nav-list_item" href="#">
-                <i class="icofont-university"></i>
-               Образование
-              </a>
-            </li>
-            <li>
-             <a class="nav-list_item" href="#">
-                <i class="icofont-bag-alt"></i>
-                 Портфолио
-             </a>
-            </li>
-            <li>
-             <a class="nav-list_item" href="#">
-                <i class="icofont-ui-message"></i>
-                Мои Приглашения
-             </a>
-            </li>
+          
           </ul>
           <hr>
           <ul>

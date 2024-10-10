@@ -9,13 +9,15 @@ header('Location: index.php');
 
 require_once 'config/connect.php';
 include_once 'objects/resume.php';
-include_once 'objects/get-date.php';
+include_once 'objects/skills-info.php';
 
 $database = new Connect;
 $db = $database->getConnect();
 
 $resume = new Resume($db);
 $res = $resume->readInfo();
+
+$skills = new Skills($db);
 
 ?>
 
@@ -24,7 +26,7 @@ $res = $resume->readInfo();
 $row = $res->fetch(PDO::FETCH_ASSOC);
 extract($row);
 
-$title_page = "Опыт работы";
+$title_page = "Ключевые навыки";
 
 ?>
 
@@ -61,15 +63,15 @@ include_once 'layout-head.php';
                   </a>
                 </li>
                 <li>
-                  <a class="nav-list_item active" href="#">
+                  <a class="nav-list_item" href="experience.php">
                     <i class="icofont-brand-wordpress"></i>
-                    Опыт работы <i class="icofont-simple-right"></i>
+                    Опыт работы 
                   </a>
                 </li>
                 <li>
-                  <a class="nav-list_item" href="skills.php">
+                  <a class="nav-list_item active" href="skills.php">
                     <i class="icofont-key"></i>
-                    Ключевые навыки
+                    Ключевые навыки <i class="icofont-simple-right"></i>
                   </a>
                 </li>
                 <li>
@@ -109,115 +111,72 @@ include_once 'layout-head.php';
 
           <div class="col l9 s12">
 
-          <?php  
-
-          $dt = new GetDate();
-
-          $experinces = $resume->readExperience();
-          $count = $resume->countExperience();
-          ?>   
+    
             <section class="main-content">
               
         
-              <div class="col l10 s12">
+              <div class="col s12">
+              <table class="responsive-table centered white z-depth-2">
+        <thead>
+          <tr>
+              <th>Иконка</th>
+              <th>Навык</th>
+              <th>Описание</th>
+              <th>Редактировать</th>
+              <th>Удалить</th>
+          </tr>
+        </thead> 
 
-               <div class="card">
-                  <div class="card-content">
-                    <span class="card-title">Добавить Опыт работы</span>
-                    <a href="add-work.php" class="btn-floating btn-large blue waves-effect"><i
-                        class="material-icons">add</i></a>
-                  </div>
-               </div> 
-
- <?php 
- if($count > 0){
-  while($exp = $experinces->fetch(PDO::FETCH_ASSOC)){
-
-    $podate = $exp['period'];
-    $endate = $exp['period_end'];
-
-    $y = $dt->getYear($podate);
-    $m = $dt->getMonth($podate);
-    $d = $dt->getDay($podate);
-    $yeval = $dt->getAge($y, $m, $d);
-    $mval = (12 - $m) + date('m');
-    
-    $endt = explode("-", $endate);
-    $yend = $endt[0];
-    $endmonth = $endt[1];
-    $endday = $endt[2];
-    
-    $endmval = $endmonth - $m;
-
-     extract($exp);
-
-  echo '<div class="card hoverable">
-         <div class="card-content">';
-  echo "<b class='card-title'> {$comps} </b>";
-  echo "<h5>
-          {$prof}
-        </h5>";
-  echo "<blockquote>
-         {$descs}
-        </blockquote>
-       <br>";
-  echo '<span class="red-text accent-2" >';
-  echo "{$period}"." - ";
-       if($exp['period_end'] == Null)
-       {
-        echo "По сей день(Авось и ныне там 😅)";
-        echo "<br>
-              <h6>
-              <b class='purple-text lighten-3'>";
-              if($yeval > 1){
-                echo $mval . " Monthes";
-              }
-              else {
-                 echo $yeval." Years " . $mval . " Monthes";
-              }
-        echo "</b>
-              </h6>";
-       }
-
-       else {
-        echo "{$period_end}";
-        echo "<br>
-              <h6>
-              <b class='purple-text lighten-3'>";
-        echo   $yend - $y ." Years " . $endmval . " Monthes";
-        echo "</b>
-              </h6>";
-
-      }
-  echo "</span>";
+        <tbody> 
        
-  echo "</span>
-  </div>";
 
-echo "<div class='card-action'>
-    <a href='redact-work.php?id={$id}'>
-    <i class='icofont-pencil-alt-5'></i>
-      Редактировать
-    </a>
-    <a delete-id='{$id}' class='red-text lighten-2 delete'>
-    <i class='icofont-ui-delete'></i>
-      Удалить
-    </a>
-  </div>
-</div>"; 
-  }
- }
- else{
-  echo '<div class="card">
-          <div class="card-content">
-              <span class="card-title">Опыт работы отсутсвует</span>
-         </div>
-        </div> ';
- }
- ?>              
-              
+       <?php 
 
-                
+          $rows = $skills->readSkills();
+
+          while($row = $rows->fetch(PDO::FETCH_ASSOC))
+          {
+                extract($row);
+
+                echo " <tr>
+                        ";
+
+         echo "<td>
+                <h5>    
+                  <i class='icofont-{$icon}'></i>
+                </h5> 
+               </td> ";
+                echo " <td><b> {$title}</b></td>";
+                echo " <td><p> {$description}</p></td>";
+                echo "<td>
+              <a href='redact-skill.php?id={$id}' class='btn-small btn'>
+                <i class='icofont-edit-alt'></i>
+              </a> 
+            </td>";
+            echo "<td>
+              <a delete-id='{$id}' class='btn-small btn red delete'>
+              <i class='icofont-ui-delete'></i>
+              </a> 
+            </td>
+          </tr>";
+
+          }
+
+       ?>
+                  
+        <tr>
+          <td>
+           <a href="add-skill.php" class="btn-floating btn-large waves-effect waves-light modal-trigger lime darken-1">
+             <i class="icofont-ui-add"></i>
+           </a>
+         </td>
+         <td colspan="2">
+            <h5 class="orange-text darken-2">Добавить Ключевой Навык</h5>
+         </td>
+        </tr>   
+          
+        </tbody>
+      </table>
 
           </div>
 
@@ -231,14 +190,15 @@ echo "<div class='card-action'>
 <?php
  include_once 'layout-script.php';
 ?>
+
   <script>
     // JavaScript для удаления товара
     $(document).on("click", ".delete", function() {
         const id = $(this).attr("delete-id");
 
         mzbox.confirm({
-           title: "Удаление Места Работы",
-            message: "Вы уверены что хотите удалить текущее место работы ?",
+           title: "Удаление Навыка Работы",
+            message: "Вы уверены что хотите удалить навык ?",
             buttons: {
                    ok: {
                       label: 'OK',
@@ -252,7 +212,7 @@ echo "<div class='card-action'>
             },
             callback: function(result) {
                 if (result == true) {
-                    $.post("delete-exp.php", {
+                    $.post("objects/delete-skill.php", {
                         object_id: id
                     }, function(data) {
                         location.reload();

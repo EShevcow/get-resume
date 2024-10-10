@@ -2,7 +2,6 @@
 class Resume
 {
     private $connect;
-   # private $user = "accounts";
     private $table = "resume";
     private $works = "works";
 
@@ -203,7 +202,7 @@ class Resume
               // фото загружено
       } 
       else {
-          $result_message .= "<div class='alert alert-danger'>";
+          $result_message .= "<div class='alert-danger'>";
           $result_message .= "<div>Невозможно загрузить фото.</div>";
           $result_message .= "<div>Обновите запись, чтобы загрузить фото снова.</div>";
           $result_message .= "</div>";

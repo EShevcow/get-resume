@@ -1,0 +1,59 @@
+@import "_variables.scss";
+
+/* Cards */
+@mixin card{
+    box-shadow: $bshd;
+    border-radius: 5px;
+}
+.card-vertical{
+    @include card;
+}
+@mixin fcolfs {
+    display: $dsp;
+    flex-direction: $fd;
+    align-items: $ai;
+}
+.card__wrap{
+    padding: 20px;
+    gap: 20px;
+}
+.card-vertical .card__wrap{
+    @include fcolfs;
+}
+.card__image{
+    background: #F4F2F7;
+    padding: 5px;
+    border-radius: 5px;
+    @include frow;
+    justify-content: center;
+}
+.card__image img{
+    width: 100%;
+}
+.card__image-icon{
+    font-weight: 900;
+    font-size: 64px;
+    line-height: 74px;
+}
+.card__text-block{
+    @include fcolfs;
+    padding: 0;
+    gap: 8px;
+}
+.card__action{
+    @include frow;
+    padding: 0;
+    gap: 20px;
+}
+.card-horizontal{
+    @include card;
+}
+.card-horizontal .card__wrap{
+    display: $dsp;
+    flex-direction: row;
+    align-items: $ai;
+}
+.card-horizontal .card__image{
+   width: 40%;
+   height: auto;
+}

@@ -1,0 +1,40 @@
+@import "variables.scss";
+@mixin frcsb{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+footer{
+    box-shadow: $bshd;
+    & .footer-content{ 
+        min-height: 120px;
+        padding: 16px 85px 16px 50px;
+        @include frcsb;
+        background: #FFF;
+        & .footer-img img{
+            height: 120px;
+        }
+    }
+    & .footer-copyright{
+        padding: 16px 50px 16px 50px;
+        @include frcsb;
+        background: whitesmoke;
+        color: $standart-color;
+    }
+}
+@media (max-width: 768px) {
+    .social{
+        margin-right: 0;
+        padding-bottom: 16px;
+    }
+    footer{
+        & .footer-content, .footer-copyright{
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            padding: 16px 0 16px 0;
+        }
+      }
+}
