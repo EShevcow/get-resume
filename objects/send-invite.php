@@ -3,7 +3,7 @@
  class InviteSend
 {
     private $connect;
-    private $table_name = "invites_new";
+    private $table_name = "invites";
 
     // свойства обьекта
     public $id;

@@ -88,6 +88,8 @@ hr{
     padding: 10px 5px 10px 10px;
 	margin: 15px 0 10px 0;
     text-transform: capitalize;
+	border-radius: 3px;
+	box-shadow: #212121 3px;
     color: white;
 	background: red;
     font-weight: bold;

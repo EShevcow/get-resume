@@ -227,10 +227,9 @@ echo "<div class='card-action'>
 
     </div>
   </div>
+<!-- Materialize Bootbox -->
+<script src="libs/js/mzbox.min.js"></script>
 
-<?php
- include_once 'layout-script.php';
-?>
   <script>
     // JavaScript для удаления товара
     $(document).on("click", ".delete", function() {

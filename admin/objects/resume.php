@@ -38,23 +38,39 @@ class Resume
         return $info;
     }
 
-    function updateInfo(){
-        $query = "UPDATE " . $this->table . " SET fullname = '$this->fullname',
-        phone = '$this->phone', email = '$this->email', live_place = '$this->live_place',
-        profession = '$this->profession', avatar = '$this->avatar', money = '$this->money', about = '$this->about' ";
+    public function updateHome(){
+      $query = "UPDATE " . $this->table . " SET
+      fullname = '$this->fullname', avatar = '$this->avatar' ";
 
-        // подготовка запроса
-        $stmt = $this->connect->prepare($query);
+      // подготовка запроса
+      $stmt = $this->connect->prepare($query);
 
-         // выполняем запрос
-       if ($stmt->execute()) {
-        return true;
-       }
-       else{
-         return false;
-       }     
+      // выполняем запрос
+      if ($stmt->execute()) {
+       return true;
+      }
+      else{
+        return false;
+      }     
+ }
 
-    }
+ public function updateResume(){
+      $query = "UPDATE " . $this->table . " SET
+      phone = '$this->phone', email = '$this->email', live_place = '$this->live_place',
+      profession = '$this->profession', money = '$this->money', about = '$this->about' ";
+
+      // подготовка запроса
+      $stmt = $this->connect->prepare($query);
+
+       // выполняем запрос
+     if ($stmt->execute()) {
+      return true;
+     }
+     else{
+       return false;
+     }     
+
+  }
 
     function readExperience()
     {

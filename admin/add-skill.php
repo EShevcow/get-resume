@@ -63,7 +63,7 @@ include_once 'layout-head.php';
                   </a>
                 </li>
                 <li>
-                  <a class="nav-list_item" href="#">
+                  <a class="nav-list_item" href="experience.php">
                     <i class="icofont-brand-wordpress"></i>
                     Опыт работы 
                   </a>
@@ -76,8 +76,8 @@ include_once 'layout-head.php';
                 </li>
                 <li>
                   <a class="nav-list_item active" href="#">
-                    <i class="icofont-university"></i>
-                   Добавление навыка <i class="icofont-simple-right"></i>
+                    <i class="icofont-ui-add"></i>
+                     Добавление навыка <i class="icofont-simple-right"></i>
                   </a>
                 </li>
                 <li class="divider"></li>

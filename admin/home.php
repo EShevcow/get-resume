@@ -133,7 +133,7 @@ session_start();
      
       // Если не удается обновить аватар
       else {
-        echo "<div class='alert-danger z-depth-2'>
+        echo "<div class='alert-danger'>
         
                <b> Аватар не был обновлен!<b>
         

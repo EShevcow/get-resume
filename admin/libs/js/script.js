@@ -1,10 +1,14 @@
 // 1) Select
-$(document).ready(function(){
-    $('select').formSelect();
-  });
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('select');
+  var instances = M.FormSelect.init(elems);
+});
 
 // 2) Dropdown
-$('.dropdown-trigger').dropdown();
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.dropdown-trigger');
+  var instances = M.Dropdown.init(elems);
+});
 
 // 3) Modal
 $(document).ready(function(){

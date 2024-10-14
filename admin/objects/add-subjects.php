@@ -6,6 +6,7 @@ class AddSubjects extends Resume
 { 
 
   private $works = "works";
+  private $edu = "educats";
 
   function __construct($db)
   {

@@ -107,36 +107,19 @@ session_start();
               </a>
             </li>
             <li>
-                <a class="nav-list_item active" href="experience.php">
+                <a class="nav-list_item" href="experience.php">
                   <i class="icofont-brand-wordpress"></i>
                   Опыт работы 
-                  <i class="icofont-simple-right"></i> 
-                  Редактирование <?php echo $redexp->comps;  ?>
+               
+                 
                 </a>
               </li>
             <li>
-              <a class="nav-list_item" href="#">
-               <i class="icofont-key"></i>
-                Ключевые навыки
+              <a class="nav-list_item active" href="#">
+               <i class="icofont-pencil"></i>
+                 Редактирование <?php echo $resume->comps;  ?>   
+                 <i class="icofont-simple-right"></i> 
               </a>
-            </li>
-            <li>
-              <a class="nav-list_item" href="#">
-                <i class="icofont-university"></i>
-               Образование
-              </a>
-            </li>
-            <li>
-             <a class="nav-list_item" href="#">
-                <i class="icofont-bag-alt"></i>
-                 Портфолио
-             </a>
-            </li>
-            <li>
-             <a class="nav-list_item" href="#">
-                <i class="icofont-ui-message"></i>
-                Мои Приглашения
-             </a>
             </li>
           </ul>
           <hr>

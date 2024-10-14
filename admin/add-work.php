@@ -84,10 +84,7 @@ session_start();
 
             </div>
            </div>
-          </div>
-     
-    
-     <div class="row">
+        
        <div class="col l3">
         <div class="nav-panel hoverable">
           <div class="avatar">
@@ -110,19 +107,12 @@ session_start();
                 </a>
               </li>
             <li>
-              <a class="nav-list_item active" href="#">           
+              <a class="nav-list_item active" href="#">  
+              <i class="icofont-ui-add"></i>         
            Добавление Опыта работы <i class="icofont-simple-right"></i>
               </a>
             </li>
-          
-          </ul>
-          <hr>
-          <ul>
-            <li>
-              <a class="exit" href="#"> 
-              <i class="icofont-settings-alt"></i>
-                Настройки 
-              </a>
+            <li class="divider">
             </li>
             <li>
               <a class="exit" href="#"> 
@@ -154,7 +144,7 @@ if($_POST)
           </script>';
    }
    else {
-     echo "<div class='alert-danger red'>Опыт не был добавлен!</div>";
+     echo "<div class='alert-danger'>Опыт не был добавлен!</div>";
    }
  } 
 ?>
@@ -162,16 +152,16 @@ if($_POST)
               
           <div class="col s12 l6">
 
-            <div class="card hoverable">
-                <div class="card-content">
-                    <span class="card-title">Добавление Опыта работы</span>
+  <div class="card hoverable">
+   <div class="card-content">
+    <span class="card-title">Добавление Опыта работы</span>
     <form 
        action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>" 
        method="post"  >
        <div class="input-field col l8 s12">
           <i class="icofont-company prefix"></i>
           <input type="text" class="resume" name="comp">
-          <label for="">Название компаннии</label>
+          <label for="">Название компании</label>
        </div>
        <div class="input-field col l8 s12">
           <i class="icofont-worker prefix"></i>
@@ -211,10 +201,6 @@ if($_POST)
      </div>
     </div>
 
-      <!--JavaScript at end of body for optimized loading-->
-      <script type="text/javascript" src="js/materialize.min.js"></script>
-      <!-- Custom script -->
-      <script src="libs/js/script.js"></script>
     </body>
   </html>
         
