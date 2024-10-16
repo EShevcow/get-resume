@@ -15,14 +15,27 @@
  $portfolios = $resume->readPortfolio();
 
  if($countpotfolio > 0){
+
     while($prow = $portfolios->fetch(PDO::FETCH_ASSOC))
     {
         extract($prow);
 
-        echo "<div class='col l4 m6 s12'>
+        if($countpotfolio < 2)
+        {
+          echo '<div class="col s12">';
+        }
+        elseif($countpotfolio <3){
+          echo '<div class="col l6 s12">';
+        }
+        else{
+          echo '<div class="col l4 s12">';
+        }
+       
+
+         echo"
               <div class='card z-depth-1 hoverable'>
               <div class='card-image'>
-              <img src='http://head-hunter.fun/admin/img/portfolio/{$image}'>";
+              <img class='materialboxed' src='admin/img/works/{$image}'>";
         echo "<span class='card-title'>{$title}</span>
               </div>";
         echo "<div class='card-content'>

@@ -28,6 +28,14 @@
 ?>
 
 <style>
+  blockquote{
+    border-color: royalblue;
+  }
+  .character-counter{
+    color: white;
+    font-size: 1em!important;
+    font-weight: bold;
+  }
 /* Adaptate */
 @media screen and (max-width: 560px){
 	.brand-logo{

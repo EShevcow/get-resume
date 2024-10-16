@@ -10,8 +10,8 @@
              if($row['avatar'] == Null){
               echo "uploads/uefh9.png";
                }
-                 else{
-                echo "libs/img/"."{$avatar}"; 
+             else{
+                echo "admin/img/"."{$avatar}"; 
                }
               ?>" 
           alt="Avatar">

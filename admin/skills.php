@@ -81,24 +81,26 @@ include_once 'layout-head.php';
                   </a>
                 </li>
                 <li>
-                  <a class="nav-list_item" href="#">
+                  <a class="nav-list_item" href="portfolio.php">
                     <i class="icofont-bag-alt"></i>
                     Портфолио
                   </a>
                 </li>
                 <li>
-                  <a class="nav-list_item" href="#">
+                  <a class="nav-list_item" href="invites.php">
                     <i class="icofont-ui-message"></i>
                     Мои Приглашения
                   </a>
                 </li>
                 <li class="divider"></li>
+                <!--
                 <li>
                   <a class="nav-list_item" href="#">
                     <i class="icofont-settings-alt"></i>
                     Настройки
                   </a>
                 </li>
+                -->
                 <li>
                   <a class="nav-list_item" href="#">
                     <i class="icofont-exit"></i>

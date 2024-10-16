@@ -80,6 +80,7 @@ class Resume
     
         return $exp;
     }
+    
     public function countExperience()
     {
       $query = "SELECT id FROM ". $this->works . " ";
