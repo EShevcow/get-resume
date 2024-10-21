@@ -3,15 +3,15 @@
 if($_POST){
     // подключаем файлы для работы с базой данных и файлы с объектами
    
-    require_once 'config/connect.php';
-    include_once 'objects/resume.php';
+    require_once '../config/connect.php';
+    include_once 'experience.php';
     
     // получаем соединение с базой данных
     $database = new Connect;
     $db = $database->getConnect();  
 
-    // подготавливаем объект Portfolio
-    $res = new Resume($db);
+    // подготавливаем объект 
+    $res = new Experience($db);
 
     // устанавливаем ID для удаления
   
@@ -27,9 +27,6 @@ if($_POST){
         echo "Неудалось удалить приглашение ";
     } 
   }
-  if(!$res){
-   
-    die("Не удалось подключится!");
-}
-echo $_POST['object_id'];
+ 
+
 ?>

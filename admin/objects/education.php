@@ -37,7 +37,7 @@ class Education {
 
     public function addEducation(){
 
-        $query = "INSERT INTO" . $this->edu . "(`id`, `level`, `institution`, `facultet`, `specialization`, `period`, `periodend`)
+        $query = "INSERT INTO" . $this->edu . "(`id`, `level`, `institution`, `facultet`, `specialization`, `period`, `periodend`)" . "
         VALUES (NULL, '$this->level', '$this->institution', '$this->facultet', '$this->specialization','$this->period', '$this->periodend')";
       
         $res = $this->connect->prepare($query);

@@ -84,17 +84,19 @@ include_once 'layout-head.php';
                 </li>
                 <li>
                   <a class="nav-list_item active" href="#">
-                    <i class="icofont-university"></i>
+                    <i class="icofont-pencil"></i>
                      <?php echo "Редактирование навыка ". $skills->title; ?><i class="icofont-simple-right"></i>
                   </a>
                 </li>
                 <li class="divider"></li>
+                <!--
                 <li>
                   <a class="nav-list_item" href="#">
                     <i class="icofont-settings-alt"></i>
                     Настройки
                   </a>
-                </li>
+                </li> 
+                -->
                 <li>
                   <a class="nav-list_item" href="#">
                     <i class="icofont-exit"></i>

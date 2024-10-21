@@ -46,49 +46,10 @@ include_once 'layout-head.php';
         <div class="row">
             <div class="col s12">
 
-             <div class="header">
-              <a class="brand-logo">
-               <img src="libs/img/logo.png" alt="logotype"/>
-              </a>
+            <?php
+            include_once 'layout-header.php';
+            ?>
               
-              <a href="#" data-target='dropdown1' class="right dropdown-trigger">
-                <i class="icofont-navigation-menu"></i>
-              </a>
-
-             <ul id='dropdown1' class='dropdown-content'>
-                <li>
-                    <a class="nav-list_item" href="home.php">
-                     Главная
-                    </a>
-                  </li>
-                  <li>
-                    <a class="nav-list_item" href="experience.php">
-                     Опыт работы
-                    </a>
-                  </li>
-                  <li>
-                    <a class="nav-list_item" href="skills.php">
-                      Ключевые навыки
-                    </a>
-                  </li>
-                  <li>
-                    <a class="nav-list_item" href="education.php">
-                     Образование
-                    </a>
-                  </li>
-                  <li>
-                   <a class="nav-list_item" href="portfolio.php">
-                       Портфолио
-                   </a>
-                  </li>
-                  <li>
-                   <a class="nav-list_item" href="invites.php">
-                      Мои Приглашения
-                   </a>
-                  </li>
-            </ul>
-
-            </div>
            </div>
         
 
@@ -169,7 +130,7 @@ include_once 'layout-head.php';
               
       <div class="col l12 s12">
 
-      <div class="card">
+      <div class="card hoverable">
           <div class="card-content"> 
           
             <p class="card-title"><?= $inv->company; ?></p>

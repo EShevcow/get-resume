@@ -10,19 +10,22 @@ session_start();
    $id = isset($_GET["id"]) ? $_GET["id"] : die("ERROR: отсутствует ID."); 
 
    require_once 'config/connect.php';
+   include_once 'objects/resume.php';
+   include_once 'objects/experience.php';
 
    $database = new Connect();
    $db = $database->getConnect();
 
-   include_once 'objects/resume.php';
+   
    $resume = new Resume($db);
+   $exp = new Experience($db);
 
-   // устанавливаем свойство ID товара для чтения
-   $resume->id = $id; 
+   // устанавливаем свойство ID для чтения
+   $exp->id = $id; 
 
-   $resume->readOneExp(); 
+   $exp->readOneExp(); 
 
-   $title_page = "Работа в компании: " . " $resume->comps;";
+   $title_page = "Работа в компании: " . " $exp->comps;";
  
 ?>
 <?php 
@@ -42,55 +45,13 @@ session_start();
   <div class="container-fluid">
     <div class="row">
       <div class="col s12">
-
-             <div class="header">
-              <a class="brand-logo">
-               <img src="libs/img/logo.png" alt="logotype"/>
-              </a>
-              
-              <a href="#" data-target='dropdown1' class="right dropdown-trigger">
-                <i class="icofont-navigation-menu"></i>
-              </a>
-
-             <ul id='dropdown1' class='dropdown-content'>
-                <li>
-                    <a class="nav-list_item" href="#">
-                     Главная
-                    </a>
-                  </li>
-                  <li>
-                    <a class="nav-list_item" href="#">
-                     Опыт работы
-                    </a>
-                  </li>
-                  <li>
-                    <a class="nav-list_item" href="#">
-                      Ключевые навыки
-                    </a>
-                  </li>
-                  <li>
-                    <a class="nav-list_item" href="#">
-                     Образование
-                    </a>
-                  </li>
-                  <li>
-                   <a class="nav-list_item" href="#">
-                       Портфолио
-                   </a>
-                  </li>
-                  <li>
-                   <a class="nav-list_item" href="#">
-                      Мои Приглашения
-                   </a>
-                  </li>
-            </ul>
-
-            </div>
-           </div>
-          </div>
-     
-    
-     <div class="row">
+        
+      <?php
+        include_once 'layout-header.php';
+      ?>
+           
+      </div>
+         
        <div class="col l3">
         <div class="nav-panel hoverable">
           <div class="avatar">
@@ -117,18 +78,11 @@ session_start();
             <li>
               <a class="nav-list_item active" href="#">
                <i class="icofont-pencil"></i>
-                 Редактирование <?php echo $resume->comps;  ?>   
+                 Редактирование <?php echo $exp->comps;  ?>   
                  <i class="icofont-simple-right"></i> 
               </a>
             </li>
-          </ul>
-          <hr>
-          <ul>
-            <li>
-              <a class="exit" href="#"> 
-              <i class="icofont-settings-alt"></i>
-                Настройки 
-              </a>
+            <li class="divider">
             </li>
             <li>
               <a class="exit" href="#"> 
@@ -147,13 +101,13 @@ if($_POST)
  {
     // установим значения свойствам товара
  #  $resume->id = $id;
-   $resume->comps = $_POST["comp"];
-   $resume->prof = $_POST["prof"];
-   $resume->descs = $_POST["desc"];
-   $resume->period = $_POST["fdate"];
-   $resume->period_end = $_POST["edate"];
+   $exp->comps = $_POST["comp"];
+   $exp->prof = $_POST["prof"];
+   $exp->descs = $_POST["desc"];
+   $exp->period = $_POST["fdate"];
+   $exp->period_end = $_POST["edate"];
 
-   if($resume->updateOneExp())
+   if($exp->updateOneExp())
    {
      echo '<script>
             var toastHTML = "<h1>Опыт работы обновлен!</h1>";
@@ -174,31 +128,31 @@ if($_POST)
                     <span class="card-title">Редактирование Опыта Работы</span>
     
      
-<form action="<?= htmlspecialchars($_SERVER['PHP_SELF'] . "?id={$resume->id}"); ?>" 
+<form action="<?= htmlspecialchars($_SERVER['PHP_SELF'] . "?id={$exp->id}"); ?>" 
        method="post" >
            <div class="input-field col l10 s12">
           <i class="icofont-company prefix"></i>
-          <input type="text" class="resume" value="<?= $resume->comps; ?>" name="comp">
+          <input type="text" class="resume" value="<?= $exp->comps; ?>" name="comp">
           <label for="">Название компаннии</label>
        </div>
        <div class="input-field col l10 s12">
           <i class="icofont-worker prefix"></i>
-          <input type="text" class="resume" value="<?= $resume->prof; ?>" name="prof">
+          <input type="text" class="resume" value="<?= $exp->prof; ?>" name="prof">
           <label for="">Должность</label>
        </div>
        <div class="input-field col l10 s12">
           <i class="icofont-card prefix"></i>
-          <textarea class="materialize-textarea" name="desc"><?= $resume->descs; ?></textarea>
+          <textarea class="materialize-textarea" name="desc"><?= $exp->descs; ?></textarea>
           <label for="">Краткое Описание</label>
       </div>
       <div class="input-field col l10 s12">
           <i class="icofont-calendar prefix"></i>
-          <input type="date" class="resume" value="<?= $resume->period; ?>" name="fdate">
+          <input type="date" class="resume" value="<?= $exp->period; ?>" name="fdate">
           <label for="">Дата начала работы</label>
       </div>
       <div class="input-field col l10 s12">
          <i class="icofont-ui-calendar prefix"></i>
-         <input type="date" class="resume" value="<?= $resume->period_end; ?>" name="edate" >
+         <input type="date" class="resume" value="<?= $exp->period_end; ?>" name="edate" >
         <label for="">Дата окончания</label>
       </div>
       <div class="input-field col l6">

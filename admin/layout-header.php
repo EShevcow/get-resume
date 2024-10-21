@@ -9,32 +9,32 @@
 
 <ul id='dropdown1' class='dropdown-content'>
   <li>
-   <a class="nav-list_item" href="#">
+   <a class="nav-list_item " href="home.php">
     Главная
   </a>
  </li>
   <li>
-   <a class="nav-list_item" href="#">
+   <a class="nav-list_item " href="experience.php">
     Опыт работы
   </a>
  </li>
   <li>
-   <a class="nav-list_item" href="#">
+   <a class="nav-list_item " href="skills.php">
     Ключевые навыки
   </a>
  </li>
   <li>
-   <a class="nav-list_item" href="#">
+   <a class="nav-list_item" href="education.php">
     Образование
   </a>
  </li>
   <li>
-   <a class="nav-list_item" href="#">
+   <a class="nav-list_item" href="portfolio.php">
     Портфолио
   </a>
  </li>
   <li>
-   <a class="nav-list_item" href="#">
+   <a class="nav-list_item" href="invites.php">
     Мои Приглашения
   </a>
  </li>

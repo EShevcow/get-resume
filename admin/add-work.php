@@ -9,7 +9,7 @@ session_start();
 
   require_once 'config/connect.php';
   include_once 'objects/resume.php';
-  include_once 'objects/add-subjects.php';
+  include_once 'objects/experience.php';
 
   $database = new Connect;
   $db = $database->getConnect();
@@ -17,7 +17,7 @@ session_start();
   $resume = new Resume($db);
   $items = $resume->readInfo();
 
-  $addexp = new AddSubjects($db);
+  $addexp = new Experience($db);
 
 ?>
 
@@ -40,50 +40,11 @@ session_start();
     <div class="row">
       <div class="col s12">
 
-             <div class="header">
-              <a class="brand-logo">
-               <img src="libs/img/logo.png" alt="logotype"/>
-              </a>
-              
-              <a href="#" data-target='dropdown1' class="right dropdown-trigger">
-                <i class="icofont-navigation-menu"></i>
-              </a>
-
-             <ul id='dropdown1' class='dropdown-content'>
-                <li>
-                    <a class="nav-list_item" href="#">
-                     Главная
-                    </a>
-                  </li>
-                  <li>
-                    <a class="nav-list_item" href="#">
-                     Опыт работы
-                    </a>
-                  </li>
-                  <li>
-                    <a class="nav-list_item" href="#">
-                      Ключевые навыки
-                    </a>
-                  </li>
-                  <li>
-                    <a class="nav-list_item" href="#">
-                     Образование
-                    </a>
-                  </li>
-                  <li>
-                   <a class="nav-list_item" href="#">
-                       Портфолио
-                   </a>
-                  </li>
-                  <li>
-                   <a class="nav-list_item" href="#">
-                      Мои Приглашения
-                   </a>
-                  </li>
-            </ul>
-
-            </div>
-           </div>
+      <?php
+        include_once 'layout-header.php';
+      ?>
+           
+      </div>
         
        <div class="col l3">
         <div class="nav-panel hoverable">
@@ -150,7 +111,7 @@ if($_POST)
 ?>
         <section class="main-content">
               
-          <div class="col s12 l6">
+          <div class="col l8 s12">
 
   <div class="card hoverable">
    <div class="card-content">
@@ -158,35 +119,38 @@ if($_POST)
     <form 
        action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>" 
        method="post"  >
-       <div class="input-field col l8 s12">
+       <div class="input-field">
           <i class="icofont-company prefix"></i>
           <input type="text" class="resume" name="comp">
           <label for="">Название компании</label>
        </div>
-       <div class="input-field col l8 s12">
+       <div class="input-field">
           <i class="icofont-worker prefix"></i>
           <input type="text" class="resume" name="prof">
           <label for="">Должность</label>
        </div>
-       <div class="input-field col l8 s12">
+       <div class="input-field">
           <i class="icofont-card prefix"></i>
           <textarea class="materialize-textarea" name="desc"></textarea>
           <label for="">Краткое Описание</label>
       </div>
-      <div class="input-field col l8 s12">
+      <div class="input-field">
           <i class="icofont-calendar prefix"></i>
           <input type="date" class="resume" name="fdate">
           <label for="">Дата начала работы</label>
       </div>
-      <div class="input-field col l8 s12">
+      <div class="input-field">
          <i class="icofont-ui-calendar prefix"></i>
          <input type="date" class="resume"name="edate" >
         <label for="">Дата окончания</label>
       </div>
-      <button type="submit" class="btn btn-large waves-effect waves-light">
-        Добавить
-        <i class="icofont-ui-add"></i>
-      </button>
+      <div class="input-field">
+        <button type="submit" class="btn btn-large waves-effect waves-light">
+         Добавить
+         <i class="icofont-ui-add"></i>
+        </button>
+      </div>
+     
       </form>
              
                 </div>

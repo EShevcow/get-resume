@@ -15,6 +15,14 @@
 <link type="text/css" rel="stylesheet" href="libs/css/style.css"  media="screen,projection"/>
 <!--Let browser know website is optimized for mobile-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+  ul.dropdown-content{
+    width: 250px!important;
+  }
+  .dropdown-content li a{
+    color: #01579b;
+} 
+</style>
 <?php 
 include_once 'layout-script.php';
 ?>

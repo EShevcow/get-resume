@@ -26,7 +26,7 @@
 
         // текущая страница
         if ($x == $page) {
-            echo "<li class='active grey darken-3 z-depth-2'>
+            echo "<li class='active z-depth-2'>
                   <a class='waves-effect' href='#'>$x </a>
                   </li>";
         }

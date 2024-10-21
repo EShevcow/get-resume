@@ -10,12 +10,15 @@ header('Location: index.php');
 require_once 'config/connect.php';
 include_once 'objects/resume.php';
 include_once 'objects/get-date.php';
+include_once 'objects/experience.php';
 
 $database = new Connect;
 $db = $database->getConnect();
 
 $resume = new Resume($db);
 $res = $resume->readInfo();
+
+$exp = new Experience($db);
 
 ?>
 
@@ -91,12 +94,14 @@ include_once 'layout-head.php';
                   </a>
                 </li>
                 <li class="divider"></li>
+                <!--
                 <li>
                   <a class="nav-list_item" href="#">
                     <i class="icofont-settings-alt"></i>
                     Настройки
                   </a>
                 </li>
+                  -->
                 <li>
                   <a class="nav-list_item" href="#">
                     <i class="icofont-exit"></i>
@@ -113,13 +118,13 @@ include_once 'layout-head.php';
 
           $dt = new GetDate();
 
-          $experinces = $resume->readExperience();
-          $count = $resume->countExperience();
+          $experinces = $exp->readExperience();
+          $count = $exp->countExperience();
           ?>   
             <section class="main-content">
               
         
-              <div class="col l10 s12">
+              <div class="col l12 s12">
 
                <div class="card">
                   <div class="card-content">
@@ -169,12 +174,7 @@ include_once 'layout-head.php';
         echo "<br>
               <h6>
               <b class='purple-text lighten-3'>";
-              if($yeval > 1){
-                echo $mval . " Monthes";
-              }
-              else {
-                 echo $yeval." Years " . $mval . " Monthes";
-              }
+        echo $yeval." Years " . $mval . " Monthes";
         echo "</b>
               </h6>";
        }
@@ -251,7 +251,7 @@ echo "<div class='card-action'>
             },
             callback: function(result) {
                 if (result == true) {
-                    $.post("delete-exp.php", {
+                    $.post("objects/delete-exp.php", {
                         object_id: id
                     }, function(data) {
                         location.reload();

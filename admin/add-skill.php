@@ -81,12 +81,14 @@ include_once 'layout-head.php';
                   </a>
                 </li>
                 <li class="divider"></li>
+                <!--
                 <li>
                   <a class="nav-list_item" href="#">
                     <i class="icofont-settings-alt"></i>
                     Настройки
                   </a>
                 </li>
+                -->
                 <li>
                   <a class="nav-list_item" href="#">
                     <i class="icofont-exit"></i>
