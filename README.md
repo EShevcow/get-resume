@@ -1,2 +1,2 @@
 # get-resume
-Backend System For Porsonal Resume
+Backend System For Personal Resume
