@@ -23,46 +23,9 @@
   $title = "Резюме | {$profession}";
 ?>
 
-<?php
-  include_once 'layout-head.php';
+<?php 
+ include_once 'layout-head.php';
 ?>
-
-<style>
-  blockquote{
-    border-color: royalblue;
-  }
-  .character-counter{
-    color: white;
-    font-size: 1em!important;
-    font-weight: bold;
-  }
-/* Adaptate */
-@media screen and (max-width: 560px){
-	.brand-logo{
-		margin: 10px 0  0 0;
-	}
-    .page-title{
-        font-size: 1.5em;
-    }
-	.avatar{
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-	
-	h1, h2, h3{
-		text-align: center;
-	}
-	.profession{
-		font-size: 3em;
-	}
-}
-</style>
-
-<!--Linq Jquery library-->
-<script src="libs/js/jquery.js"></script>
-<!--Materialize Js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 <body>
 
@@ -105,7 +68,6 @@
 <?php 
   include_once 'other-scripts.php';
 ?>
-
 </body>
 </html>
 

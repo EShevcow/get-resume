@@ -10,7 +10,6 @@ $id = isset($_GET["id"]) ? $_GET["id"] : die("ERROR: отсутствует ID."
 
 require_once 'config/connect.php';
 include_once 'objects/resume.php';
-#include_once 'objects/core.php';
 include_once 'objects/invite-read.php';
 
 $database = new Connect;
@@ -24,7 +23,7 @@ $inv->id = $id;
 
 $inv->readOneInvite();
 
-$title_page = "Приглашение от: ".$inv->company;
+$title_page = "Приглашение от: ".$inv->name_or_company;
 
 ?>
 
@@ -101,7 +100,7 @@ include_once 'layout-head.php';
             <li>
              <a class="nav-list_item active" href="#">
                 <i class="icofont-ui-message"></i>
-                <?php echo "Приглашение от: ".$inv->company; ?>
+                <?php echo "Приглашение от: ".$inv->name_or_company; ?>
                 <i class="icofont-simple-right"></i>
              </a>
             </li>
@@ -133,13 +132,9 @@ include_once 'layout-head.php';
       <div class="card hoverable">
           <div class="card-content"> 
           
-            <p class="card-title"><?= $inv->company; ?></p>
-            <p><?= $inv->manager; ?></p>
+            <p class="card-title"><?= $inv->name_or_company; ?></p>
             <p>
-            <a href="tel:<?= $inv->number; ?>"><?= $inv->number; ?></a>
-            </p>
-            <p>
-            <a href="mailto:<?= $inv->email; ?>"><?= $inv->email; ?></a>
+            <a href="tel:<?= $inv->phone; ?>"><?= $inv->phone; ?></a>
             </p>
             <p class="invite-message">
            <blockquote>

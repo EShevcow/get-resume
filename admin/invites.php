@@ -93,7 +93,7 @@ include_once 'layout-head.php';
             <li>
              <a class="nav-list_item active" href="invites.php">
                 <i class="icofont-ui-message"></i>
-                Мои Приглашения <i class="icofont-simple-right"></i>
+                Мои Приглашения <span class="badge"><?php echo $num; ?></span>
              </a>
             </li>
             <li class="divider"></li>
@@ -135,10 +135,8 @@ include_once 'layout-head.php';
          echo '<table class="centered striped white z-depth-2">
                <thead>
                <tr>
-               <th>Компания</th>
-               <th>Менеджер</th>
+               <th>Имя или Компания</th>
                <th>Телефон</th>
-               <th>Почта</th>
                <th>Время</th>
                <th>Просмотр</th>
                <th>Удалить</th>
@@ -151,10 +149,8 @@ include_once 'layout-head.php';
            extract($row); 
 
            echo "<tr>";
-           echo "<td>{$company}</td>";
-           echo "<td>{$manager}</td>";
-           echo "<td>{$number}</td>";
-           echo "<td>{$email}</td>";
+           echo "<td>{$name_or_company}</td>";
+           echo "<td>{$phone}</td>";
            echo "<td>{$sendtime}</td>";
 
            echo "<td>

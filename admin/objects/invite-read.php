@@ -2,15 +2,11 @@
 
 class Invites
 {
-  private $connect;
-  private $table = "invites";
+   private $connect;
+   private $table = "invites_short";
 
-   // свойства обьекта
    public $id;
-   public $company;
-   public $manager;
-   public $number;
-   public $email;
+   public $phone;
    public $message;
    public $sendtime;
 
@@ -54,10 +50,8 @@ class Invites
 
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    $this->company = $row["company"];
-    $this->manager = $row["manager"];
-    $this->number = $row["number"];
-    $this->email = $row["email"];
+    $this->name_or_company = $row["name_or_company"];
+    $this->phone = $row["phone"];
     $this->message = $row["message"];
     $this->sendtime = $row["sendtime"];
    
