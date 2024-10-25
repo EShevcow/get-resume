@@ -1,0 +1,23 @@
+
+.navbar{
+   background: #222324; 
+}
+.brand-logo{
+   margin: 10px 0 0 30px;
+}
+header{
+   padding: 50px 0 50px 0;
+}
+.card{
+    background: #f5f5f5;
+}
+.avatar img{
+   max-height: 200px;
+}
+blockquote{
+    border-left-color: #1785e5;
+}
+.chip{
+    background: #222324;
+    color: white;
+}

@@ -23,7 +23,7 @@
       </div>
       <div class="col l4 offset-l2 s12">
       <h5 class="white-text">скачать резюме</h5>
-        <a class="waves-effect waves-light btn-large send">
+        <a href="download.php" class="waves-effect waves-light btn-large send">
           <i class="icofont-download"></i>
         </a>
       </div>
