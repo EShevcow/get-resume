@@ -9,10 +9,18 @@ header{
    padding: 50px 0 50px 0;
 }
 .card{
-    background: #f5f5f5;
+    background: #eee;
+}
+h3{
+   margin: 0;
+}
+p{
+   font-size: 1.4em;
 }
 .avatar img{
-   max-height: 200px;
+   max-height: 220px;
+   width: 220px;
+   margin-top: 5px;
 }
 blockquote{
     border-left-color: #1785e5;

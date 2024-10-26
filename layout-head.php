@@ -13,6 +13,13 @@
   <link rel="stylesheet" href="libs/carousel/owl.carousel.min.css">
   <link rel="stylesheet" href="libs/css/style.css">
   <style>
+     @font-face {
+        font-family: Arial, Helvetica, sans-serif;
+        src: url(libs/fonts/arial.ttf);
+       }
+       main{
+        font-family: Arial, Helvetica, sans-serif;
+       }
   blockquote{
     border-color: royalblue;
   }
@@ -66,6 +73,8 @@
 </style>
 <!-- Jquery Library -->
 <script src="libs/js/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <!-- Materialize Js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>

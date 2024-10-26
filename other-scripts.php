@@ -1,4 +1,23 @@
-
+<script type="text/javascript">
+        function convertHTMLtoPDF() {
+            const { jsPDF } = window.jspdf;
+ 
+            let doc = new jsPDF('l', 'mm', [900, 1600]);
+            let pdfjs = document.querySelector('main');
+            let prof = document.querySelector('.profession').textContent;
+            console.log(prof);
+            doc.addFont("libs/fonts/arial.ttf", "Arial", "normal");
+        
+            doc.setFont("Arial");
+            doc.html(pdfjs, {
+                callback: function(doc) {
+                    doc.save(prof + ".pdf");
+                },
+                x: 12,
+                y: 12
+            });                
+        }            
+    </script>        
 <!--Owl Carousel-->
 <script src="libs/carousel/owl.carousel.min.js"></script>
 

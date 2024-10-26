@@ -9,12 +9,20 @@
     <link rel="stylesheet" href="libs/css/resume.css">
     <link rel="stylesheet" href="libs/icofont/icofont.min.css">
     <style>
-        * {font-family: arial;
-          font-size: 14px;line-height: 14px;}
-      </style>
+       @font-face {
+        font-family: Arial, Helvetica, sans-serif;
+        src: url(libs/fonts/arial.ttf);
+       }
+       body{
+        font-family: Arial, Helvetica, sans-serif;
+       }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
-
+<main>
     <nav class="navbar">
         <div class="nav-wrapper">
           <a href="#" class="brand-logo right">
@@ -24,17 +32,17 @@
       </nav> 
 
       <header>
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col l3 s12">
+                <div class="col l2 s12">
                     <div class="avatar">
                         <img class="responsive-img" src="libs/img/avatar.jpg" alt="Avatar">
                     </div>
                 </div>
-                <div class="col l9 s12">
+                <div class="col l10 s12">
                     <div class="card">
                         <div class="card-content">
-                          <span class="card-title">Edvard Shevcov</span>
+                          <h3>Edvard Shevcov</h3>  
                           <p>30 лет, родился в 1994 Году </p>
                           <p>shevcovedvard@yandex.ru</p>
                           <p>89252334599</p>
@@ -47,14 +55,14 @@
       </header>
 
      <section>
-       <div class="container">
+       <div class="container-fluid">
         <div class="row">
             <div class="col s12">
                 <h5>Желаемая должность и зарплата</h5>
                 <hr>
                 <div class="card">
                     <div class="card-content">
-                      <span class="card-title">Web-Developer</span>
+                      <span class="card-title profession">Web-Developer</span>
                       <p>Рассчитывает на оплату от <strong>120000 рублей</strong> </p>
                     </div>
                 </div>
@@ -64,7 +72,7 @@
     </section>
 
     <section>
-       <div class="container">
+       <div class="container-fluid">
         <div class="row">
             <div class="col s12">
                 <h5>Опыт Работы</h5>
@@ -86,7 +94,7 @@
     </section>
 
     <section>
-       <div class="container">
+       <div class="container-fluid">
         <div class="row">
             <div class="col s12">
                 <h5>Ключевые Навыки</h5>
@@ -121,7 +129,7 @@
     </section>
 
     <section>
-      <div class="container">
+      <div class="container-fluid">
         <div class="row">
             <div class="col s12">
                 <h5>Образование</h5>
@@ -140,7 +148,7 @@
       </div>
     </section>
     <section>
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col s12">
                     <h5>О Себе</h5>
@@ -153,9 +161,34 @@
                           </blockquote>
                         </div>
                     </div> 
+                    <a class="waves-effect waves-light btn"  onclick="convertHTMLtoPDF()">
+                        <i class="material-icons right">cloud</i>Download
+                    </a>
                 </div>
             </div>
         </div>
     </section>
+    </main>
+    <script type="text/javascript">
+        function convertHTMLtoPDF() {
+            const { jsPDF } = window.jspdf;
+ 
+            let doc = new jsPDF('l', 'mm', [900, 1600]);
+            let pdfjs = document.querySelector('main');
+            let prof = document.querySelector('.profession').textContent;
+            doc.addFont("libs/fonts/arial.ttf", "Arial", "normal");
+        
+            doc.setFont("Arial");
+           // doc.setFontType("normal");
+           // doc.setFontSize(28);
+            doc.html(pdfjs, {
+                callback: function(doc) {
+                    doc.save(prof + ".pdf");
+                },
+                x: 12,
+                y: 12
+            });                
+        }            
+    </script>        
 </body>
 </html>
