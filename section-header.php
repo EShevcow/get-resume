@@ -1,35 +1,4 @@
-<header id="home" class="intro spy"> 
- <div class="overlay">
-  <div class="container">
-    <div class="row">
-
-       <div class="col l6">
-        <div class="avatar">
-          <img class="responsive-img materialboxed hoverable z-depth-3" src="
-          <?php
-             if($row['avatar'] == Null){
-              echo "uploads/uefh9.png";
-               }
-             else{
-                echo "admin/img/"."{$avatar}"; 
-               }
-              ?>" 
-          alt="Avatar">
-        </div>
-        <h3 class="white-text name-user"><?php echo "{$fullname}" ?></h3>
-        <h2 class="white-text profession"><?php echo "{$profession}"; ?></h2>
-       </div>
-
-       <div class="col l6 s12">
-        <div class="card z-depth-3 hoverable">
-          <div class="card-content">
-            <span class="card-title">О Себе</span>
-             <blockquote class="blue-text">
-             <?php echo "{$about}"; ?> 
-            </blockquote>
-          </div>
-        </div>
-        <?php 
+<?php 
           $infouser = $resume->readAge();
  
           $infouser = $infouser->fetch(PDO::FETCH_ASSOC);
@@ -38,13 +7,31 @@
           $m = $dt->getMonth($dateborn);
           $d = $dt->getDay($dateborn);
           $age = $dt->getAge($y, $m, $d);
-         ?> 
-          <div class="card z-depth-3 hoverable"> 
-            <div class="card-content">
-              <span class="card-title">Основная Информация</span>
-              <p class="info-item">
-            <?php 
-               echo $age." лет,"." родился в ".$y. " Году ";
+?> 
+<header id="home" class="intro spy"> 
+ 
+  <div class="container">
+    <div class="row">
+    <div class="col l12 s12 card-info"> 
+    <div class="card horizontal hoverable z-depth-3">
+      <div class="card-image avatar">
+        <img class="responsive-img materialboxed " src="
+        <?php
+             if($row['avatar'] == Null){
+              echo "uploads/uefh9.png";
+               }
+             else{
+                echo "admin/img/"."{$avatar}"; 
+               }
+        ?>" alt="Avatar">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+        <h3 class="name-user"><?php echo "{$fullname}" ?></h3>
+             <?php 
+            #  echo '<p class="info-item">'; 
+              echo $age." лет,"." родился в ".$y. " Году ";
+            #  echo '</p>';
              ?>           
              </p>
               <p class="info-item">
@@ -56,15 +43,10 @@
               <p class="info-item">
                <?php echo "{$live_place}"; ?> 
               </p>
-              <p class="info-item">
-              <?php echo "Рассчитывает на оплату от "."{$money}"." рублей"; ?>
-              </p>
-            </div>
         </div>
-
-       </div>
-
-</div>
-</div>
-</div>
+       
+      </div>
+      </div>
+      </div>
+    
 </header>

@@ -1,4 +1,4 @@
-<section id="experience" class="spy">
+<section id="experience" class="experience spy">
 <?php $num = $resume->countExp(); ?>
 <h3 class="page-title">Опыт Работы
 <span class="count"><?php echo $num; ?></span>

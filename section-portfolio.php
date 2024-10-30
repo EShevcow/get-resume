@@ -1,4 +1,4 @@
-<section id="portfolio" class="spy">
+<section id="portfolio" class="portfolio spy">
 <?php $countpotfolio = $resume->countPort(); ?>
 <h3 class="page-title">
 Портфолио
@@ -39,7 +39,7 @@
         echo "<span class='card-title'>{$title}</span>
               </div>";
         echo "<div class='card-content'>
-              <p> {$descript} </p>";
+              <p class='info-item'> {$descript} </p>";
         echo "</div>";
         echo "<div class='card-action'>
               <a href='{$link}' class='btn' target='_blank'>

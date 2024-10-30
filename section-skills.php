@@ -1,47 +1,43 @@
 <?php 
  $skills = $resume->readSkills();
- $countsk = $resume->countSkills();
+ $count_skills = $resume->countSkills();
 ?>
 
 <section id="skills" class="skills spy">
-<div class="overlay">
-<h3 class="page-title white-text">Ключевые Навыки
-<span class="count"><?php echo $countsk ?></span>
-</h3>  
-
-<div class="carousel">
-  
-<?php 
-
-  if($countsk > 0)
-  {
-    while($skrow = $skills->fetch(PDO::FETCH_ASSOC)){
-     
-       extract($skrow);
-
-       echo "<div class='item wow fadeInUp'>
-             <div class='inner-logo'>
-             <h3 class='item-icon'>
-             <i class='icofont-{$icon}'></i>
-             </h3>";
-       echo "<h4 class='title-item'>{$title}</h4>";
-       echo "<p class='text-testimonial'>{$description}</p>";
-       echo "</div>
-             </div>";
-
+<h3 class="page-title">
+Ключевые навыки 
+<span class="count">
+<?php echo $count_skills; ?>
+</span>
+</h3>
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
       
-    }
-  }
-  else{
-      
-     echo "<h4 class='title-item'>Навыки отсутствуют 
-     <i class='icofont-tools-alt-2 red-text'></i>
-     </h4>";
+          <div class="card-panel hoverable">
+            <?php 
+            if($count_skills > 0){
+              while($skills_row = $skills->fetch(PDO::FETCH_ASSOC)){
      
-  }
-?>
+                extract($skills_row);
 
-</div>
-
-</div>
-</section> 
+                echo "<div class='chip' title='{$description}'>";
+                echo " <i class='icofont-{$icon}'></i>";
+                echo "{$title}";
+                echo '</div>';
+              }
+            }
+            else{
+      
+        echo "<div class='alert-absent'>Навыки отсутствуют 
+              <i class='icofont-tools-alt-2 red-text'></i>
+              </div>";
+              
+           }
+            ?>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</section>

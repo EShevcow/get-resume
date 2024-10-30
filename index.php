@@ -28,6 +28,7 @@
 ?>
 
 <body>
+
 <main>
 <?php
  include_once 'layout-navbar.php';
@@ -37,6 +38,9 @@
  include_once 'section-header.php';
 ?>
  
+<?php 
+ include_once 'section-prof.php';
+?>
 
 <?php 
  include_once 'section-experience.php';
@@ -53,6 +57,10 @@
 <?php 
   include_once 'section-portfolio.php';
 ?>
+
+<?php 
+  include_once 'section-about.php';
+?>
 </main>
 
 <?php
@@ -66,6 +74,7 @@
 <?php 
   include_once 'other-scripts.php';
 ?>
+
 </body>
 </html>
 

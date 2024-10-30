@@ -2,13 +2,27 @@
         function convertHTMLtoPDF() {
             const { jsPDF } = window.jspdf;
  
-            let doc = new jsPDF('l', 'mm', [900, 1600]);
+            let doc = new jsPDF('l', 'mm', [1550, 1300]);
             let pdfjs = document.querySelector('main');
             let prof = document.querySelector('.profession').textContent;
-            console.log(prof);
+           
+            let date = new Date();
+            let day = date.getDate();
+            let month = date.getMonth() + 1;
+            if(month < 10){
+                month = '0' + month;
+            }
+
+            let year = date.getFullYear();
+            let res = "Резюме скачано - " + day + "." + month + "." + year;
+            //print.innerHtml = res;
+            let print = document.querySelector('.print-date').textContent = res;
+
             doc.addFont("libs/fonts/arial.ttf", "Arial", "normal");
+            doc.addFont("libs/icofont/fonts/icofont.ttf", "IcoFont", "normal");
         
             doc.setFont("Arial");
+            doc.setFont("IcoFont");
             doc.html(pdfjs, {
                 callback: function(doc) {
                     doc.save(prof + ".pdf");
@@ -16,7 +30,18 @@
                 x: 12,
                 y: 12
             });                
-        }            
+        } 
+
+        setInterval(function(){
+            let w = window.innerWidth;
+            if(w < 560){
+               $('.card-info .card').removeClass('horizontal');
+            }
+            else{
+               $('.card-info .card').addClass('horizontal');
+            }
+        }, 500);
+                
     </script>        
 <!--Owl Carousel-->
 <script src="libs/carousel/owl.carousel.min.js"></script>

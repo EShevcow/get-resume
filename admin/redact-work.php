@@ -7,7 +7,7 @@ session_start();
  }
 */
 
-   $id = isset($_GET["id"]) ? $_GET["id"] : die("ERROR: отсутствует ID."); 
+$id = isset($_GET["id"]) ? $_GET["id"] : die("ERROR: отсутствует ID."); 
 
    require_once 'config/connect.php';
    include_once 'objects/resume.php';
@@ -95,6 +95,7 @@ session_start();
        </div>
 
        <div class="col l9 s12">
+    
        <?php 
 
 if($_POST)
@@ -122,7 +123,7 @@ if($_POST)
         <section class="main-content">
               
           <div class="col s12 l6">
-
+        
             <div class="card hoverable">
                 <div class="card-content row">
                     <span class="card-title">Редактирование Опыта Работы</span>

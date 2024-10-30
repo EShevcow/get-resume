@@ -37,7 +37,7 @@ $(document).ready(function(){
 }); 
 
 
-// 8) Plugin Owl Carousel
+/* 8) Plugin Owl Carousel
 $(function() {
   $(".carousel").owlCarousel({
     loop: true,
@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var elems = document.querySelectorAll('.parallax');
   var instances = M.Parallax.init(elems);
 });
+*/
 
 // 10) Navigate Page Scroll
 $('a.nav-link').click(function() {
@@ -88,3 +89,10 @@ document.addEventListener('DOMContentLoaded', function() {
   var elems = document.querySelectorAll('.spy');
   var instances = M.ScrollSpy.init(elems);
 });
+
+setInterval(function(){
+  let w = window.innerWidth;
+  if(w < 560){
+    $('.card-info .card').removeClass('horizontal');
+  }
+}, 500);

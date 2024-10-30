@@ -21,7 +21,7 @@
   }
   .dropdown-content li a{
     color: #01579b;
-} 
+  } 
 </style>
 <?php 
 include_once 'layout-script.php';
