@@ -31,23 +31,23 @@
           echo '<div class="col l4 s12">';
         }
        
-
-         echo"
+ 
+          echo"
               <div class='card z-depth-1 hoverable'>
               <div class='card-image'>
               <img class='materialboxed' src='admin/img/works/{$image}'>";
-        echo "<span class='card-title'>{$title}</span>
+          echo "<span class='card-title'>{$title}</span>
               </div>";
-        echo "<div class='card-content'>
-              <p class='info-item'> {$descript} </p>";
-        echo "</div>";
-        echo "<div class='card-action'>
+          echo "<div class='card-content'>
+                 <p class='info-item'> {$descript} </p>";
+          echo "</div>";
+          echo "<div class='card-action'>
               <a href='{$link}' class='btn' target='_blank'>
               <i class='icofont-look'></i>
               просмотр
               </a>";
-        echo "</div>  
-              </div>
+          echo "</div>  
+               </div>
               </div>";
     }
  }

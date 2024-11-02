@@ -20,6 +20,8 @@ $res = $resume->readInfo();
 
 $exp = new Experience($db);
 
+$dt = new GetDate();
+
 ?>
 
 <?php
@@ -116,7 +118,6 @@ include_once 'layout-head.php';
 
           <?php  
 
-          $dt = new GetDate();
 
           $experinces = $exp->readExperience();
           $count = $exp->countExperience();
@@ -144,16 +145,17 @@ include_once 'layout-head.php';
     $y = $dt->getYear($podate);
     $m = $dt->getMonth($podate);
     $d = $dt->getDay($podate);
+ /*
     $yeval = $dt->getAge($y, $m, $d);
     $mval = (12 - $m) + date('m');
-    
+ */   
     $endt = explode("-", $endate);
     $yend = $endt[0];
     $endmonth = $endt[1];
     $endday = $endt[2];
-    
+ /*   
     $endmval = $endmonth - $m;
-
+ */
      extract($exp);
 
   echo '<div class="card hoverable">
@@ -174,7 +176,7 @@ include_once 'layout-head.php';
         echo "<br>
               <h6>
               <b class='purple-text lighten-3'>";
-        echo $yeval." Years " . $mval . " Monthes";
+        echo   $dt->calculateInterval($podate);
         echo "</b>
               </h6>";
        }
@@ -184,7 +186,14 @@ include_once 'layout-head.php';
         echo "<br>
               <h6>
               <b class='purple-text lighten-3'>";
-        echo   $yend - $y ." Years " . $endmval . " Monthes";
+             
+              if($yend - $y < 0){
+                echo '<div class="alert-danger">Вы пытались вернутся в прошлое, но машину времени еще не изобрели! 😳 </div>';
+              }
+              else{
+                echo $dt->calculateInterval($podate, $endate);
+              }
+                
         echo "</b>
               </h6>";
 

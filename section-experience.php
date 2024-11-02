@@ -51,7 +51,7 @@
              echo "<br>
              <h6>
              <p class='grey-text'> ";
-             echo $yeval." Years " . $mval . " Monthes";
+             echo $dt->calculateInterval($fromdate);
              echo "</b>
              </p>";
             
@@ -59,8 +59,13 @@
           else {
              echo "{$period_end}";
              echo "<br>
-                   <p class='grey-text'>";
-             echo $yend - $y ." Years " . $endmval . " Monthes";
+                   <p class='count-exp'>";
+                     if($yend - $y < 0){
+                       echo '<div class="alert-danger">Путешествую во времени чтобы скорректировать свой опыт работы! 😂</div>';
+                     }
+                     else{
+                       echo $dt->calculateInterval($fromdate, $enddate);
+                     }
               echo "</p>";
              
              }

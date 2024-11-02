@@ -21,6 +21,10 @@
         background-repeat: no-repeat;
         background-size: cover;
       }
+      .count-exp{
+        font-size: 1.5em;
+        color: orangered;
+      }
       /* Adaptate */
       @media screen and (max-width: 560px){
       .brand-logo{
