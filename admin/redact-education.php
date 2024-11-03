@@ -1,11 +1,10 @@
-  <?php
+<?php
 
-/*
 session_start();
 if (!$_SESSION['user']) {
 header('Location: index.php');
 }
-*/
+
 $id = isset($_GET["id"]) ? $_GET["id"] : die("ERROR: отсутствует ID.");
 
 require_once 'config/connect.php';

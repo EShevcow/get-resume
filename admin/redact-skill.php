@@ -1,11 +1,9 @@
 <?php
 
-/*
 session_start();
 if (!$_SESSION['user']) {
 header('Location: index.php');
 }
-*/
 
 // получаем ID элемента
 $id = isset($_GET["id"]) ? $_GET["id"] : die("ERROR: отсутствует ID.");

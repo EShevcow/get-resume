@@ -1,11 +1,9 @@
 <?php
 
-/*
 session_start();
 if (!$_SESSION['user']) {
 header('Location: index.php');
 }
-*/
 
 require_once 'config/connect.php';
 include_once 'objects/resume.php';
@@ -29,7 +27,7 @@ $dt = new GetDate();
 $row = $res->fetch(PDO::FETCH_ASSOC);
 extract($row);
 
-$title_page = "Опыт работы";
+$title_page = htmlspecialchars($row['profession']) . " | " .  "Опыт работы";
 
 ?>
 
@@ -145,18 +143,13 @@ include_once 'layout-head.php';
     $y = $dt->getYear($podate);
     $m = $dt->getMonth($podate);
     $d = $dt->getDay($podate);
- /*
-    $yeval = $dt->getAge($y, $m, $d);
-    $mval = (12 - $m) + date('m');
- */   
+ 
     $endt = explode("-", $endate);
     $yend = $endt[0];
     $endmonth = $endt[1];
     $endday = $endt[2];
- /*   
-    $endmval = $endmonth - $m;
- */
-     extract($exp);
+
+    extract($exp);
 
   echo '<div class="card hoverable">
          <div class="card-content">';
@@ -166,12 +159,13 @@ include_once 'layout-head.php';
         </h5>";
   echo "<blockquote>
          {$descs}
-        </blockquote>
-       <br>";
-  echo '<span class="red-text accent-2" >';
-  echo "{$period}"." - ";
+        </blockquote>";
+  echo '<span class="period">';
+  echo  $d. '.' . $m . '.' . $y . " - ";
+
        if($exp['period_end'] == Null)
        {
+
         echo "По сей день(Авось и ныне там 😅)";
         echo "<br>
               <h6>
@@ -179,16 +173,21 @@ include_once 'layout-head.php';
         echo   $dt->calculateInterval($podate);
         echo "</b>
               </h6>";
+
        }
 
        else {
-        echo "{$period_end}";
+
+        echo $endday . '.' . $endmonth . '.' . $yend;
         echo "<br>
               <h6>
               <b class='purple-text lighten-3'>";
              
-              if($yend - $y < 0){
+              if($yend - $y < 0 || ($yend == $y && $endmonth < $m) || ($yend == $y && $endmonth == $m && $endday < $d)){
                 echo '<div class="alert-danger">Вы пытались вернутся в прошлое, но машину времени еще не изобрели! 😳 </div>';
+              }
+              elseif ($yend > date('Y') || ($yend == date('Y') && $endmonth > date('m')) || ($yend == date('Y') && $endmonth == date('m') && $endday > date('d'))) {
+                echo '<div class="alert-danger">Вы пытались отправится в будущее, но машину времени еще не изобрели! 😳 </div>';
               }
               else{
                 echo $dt->calculateInterval($podate, $endate);
@@ -223,10 +222,7 @@ echo "<div class='card-action'>
          </div>
         </div> ';
  }
- ?>              
-              
-
-                
+ ?>                         
 
           </div>
 

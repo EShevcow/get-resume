@@ -22,6 +22,10 @@
   .dropdown-content li a{
     color: #01579b;
   } 
+  .period{
+    font-size: 1.1em;
+    color: #607d8b;
+  }
 </style>
 <?php 
 include_once 'layout-script.php';

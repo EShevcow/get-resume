@@ -17,17 +17,17 @@
    
     public function getYear($pdate) {
         $date = DateTime::createFromFormat("Y-m-d", $pdate);
-        return $date->format('Y ');
+        return $date->format('Y');
     }
 
     public function getMonth($pdate) {
         $date = DateTime::createFromFormat("Y-m-d", $pdate);
-        return $date->format("m ");
+        return $date->format("m");
     }
 
     public function getDay($pdate) {
         $date = DateTime::createFromFormat("Y-m-d", $pdate);
-        return $date->format("d ");
+        return $date->format("d");
     }
   
     public function calculateInterval($startDate, $endDate = null) {
@@ -60,11 +60,16 @@
       if ($endYear < $startYear || ($endYear == $startYear && $endMonth < $startMonth) || ($endYear == $startYear && $endMonth == $startMonth && $endDay < $startDay)) {
           throw new Exception("Вы не можете возвращаться в прошлое!");
       }
+      else if($endYear > date('Y') || ($endYear == date('Y') && $endMonth > date('m')) || ($endYear == date('Y') && $endMonth == date('m') && $endDay > date('d'))) {
+          throw new Exception("Вы не можете перемещатся в будущее!");
+      }
+      else{
+          // Создаем объекты DateTime для начальной и конечной даты
+          $start = DateTime::createFromFormat('Y-m-d', "$startYear-$startMonth-$startDay");
+          $end = DateTime::createFromFormat('Y-m-d', "$endYear-$endMonth-$endDay");
+      }
   
-      // Создаем объекты DateTime для начальной и конечной даты
-      $start = DateTime::createFromFormat('Y-m-d', "$startYear-$startMonth-$startDay");
-      $end = DateTime::createFromFormat('Y-m-d', "$endYear-$endMonth-$endDay");
-  
+    
       // Вычисляем разницу между датами
       $interval = $start->diff($end);
   
