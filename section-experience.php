@@ -43,34 +43,37 @@
         echo "<span class='card-title'> {$comps} </span>";
         echo "<b class='exp-prof'> {$prof} </b>";
         echo "<blockquote> {$descs} </blockquote>";
-        echo "<p>";
-        echo "{$period}"." - ";
+        echo "<span class='period'>";
+        echo $d. '.' . $m . '.' . $y." - ";
           if($exp['period_end'] == Null)
             {
-             echo "До сих пор там";
-             echo "<br>
-             <h6>
-             <p class='grey-text'> ";
+             echo "До сих пор там"; 
+             echo "</span>";
+             echo "<br>";
+             echo "<p class='count-exp'>";
              echo $dt->calculateInterval($fromdate);
-             echo "</b>
-             </p>";
+             echo "</p>";
             
             }
           else {
-             echo "{$period_end}";
+             echo $endday . '.' . $endmonth . '.' . $yend;
+             echo "</span>";
              echo "<br>
                    <p class='count-exp'>";
-                     if($yend - $y < 0){
-                       echo '<div class="alert-danger">Путешествую во времени чтобы скорректировать свой опыт работы! 😂</div>';
+                     if($yend - $y < 0 || ($yend == $y && $endmonth < $m) || ($yend == $y && $endmonth == $m && $endday < $d)){
+                       echo '<div class="alert-danger">Отправляюсь в прошлое чтобы скорректировать свой опыт работы! 😂</div>';
+                     }
+                     else if($yend > date('Y') || ($yend == date('Y') && $endmonth > date('m')) || ($yend == date('Y') && $endmonth == date('m') && $endday > date('d'))){
+                       echo '<div class="alert-danger">Путешествую в будущее чтобы увидеть вкатился я в айти или нет! 😂</div>';
                      }
                      else{
                        echo $dt->calculateInterval($fromdate, $enddate);
                      }
               echo "</p>";
              
-             }
-     echo "</p>
-     </div>
+         }
+
+     echo "</div>
      </div>";
 
     }

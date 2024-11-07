@@ -4,7 +4,7 @@
 </h3>
     <div class="container">
         <div class="row">
-           <div class="col l12">
+           <div class="col l12 s12">
                <div class="card hoverable">
                     <div class="card-content">
                       <span class="card-title profession"><?php echo "{$profession}"; ?></span>

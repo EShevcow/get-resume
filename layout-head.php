@@ -10,10 +10,15 @@
   <link rel="stylesheet" href="libs/icofont/icofont.css">
   <link rel="stylesheet" href="libs/css/materialize.min.css">
   <link rel="stylesheet" href="libs/css/animate.css">
-  <link rel="stylesheet" href="libs/carousel/owl.carousel.min.css">
   <link rel="stylesheet" href="libs/css/style.css">
   <link rel="stylesheet" href="libs/css/resume.css">
   <style>
+    .avatar img {
+	      height: 100%;
+    }
+    .card-info .card-content{
+      padding-bottom: 0;
+    }
     .send-invite{
         padding: 0;
         background-image: url(libs/img/kristopher.jpg);
@@ -21,12 +26,37 @@
         background-repeat: no-repeat;
         background-size: cover;
       }
+      .card-content p{
+        padding: 0;
+      }
       .count-exp{
         font-size: 1.5em;
         color: orangered;
       }
+      .exp-prof{
+	      color: #42a5f5;
+        font-size: 1.2em;
+       }
+       blockquote{
+        border-color: #42a5f5;
+        font-size: 1.1em;
+       }
+       .about blockquote{
+         font-size: 1.5em;
+         color: #212121;
+       }
+       .period{
+        padding: 5px 0 10px 0;
+        font-size: 1.1em;
+        color: #42a5f5;
+       }
+ 
       /* Adaptate */
       @media screen and (max-width: 560px){
+        html{
+          overflow-x: hidden;
+         
+        }
       .brand-logo{
         margin: 10px 0 0 0;
       }
@@ -37,6 +67,9 @@
         width: auto;
         margin: 0px;
       }
+      .card-info .card-content{
+         padding-bottom: 1em;
+       }
       .count{
         font: 1em sans-serif;
       }
@@ -46,6 +79,7 @@
       .profession{
         font-size: 1em;
       }
+      
     }
 </style>
 <!-- Jquery Library -->

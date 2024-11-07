@@ -32,10 +32,6 @@
  .card-image img{
     height: 300px;
  }
- blockquote{
-   border-color: #1785e5;
-   font-size: 1.5em;
- }
  .info-item{
   padding: 5px;
   font-weight: 500;
@@ -103,12 +99,6 @@
    background: white;
  }
  .portfolio, .stydi .card{
-   background: #e0e0e0;
- }
- .about{
-   background: white;
- }
- .about .card-panel{
    background: #e0e0e0;
  }
 

@@ -26,8 +26,18 @@ if($_POST)
         echo "<p class='alert-danger'> Пустое или некорректно заполненое поле! </p>";
         return false;
       } 
+     
 
      else{
+
+      $to = $resume->email; // Куда
+      $email_subject = "Новое приглашение на сайте:  get-resume.pw";
+      $email_body = "Вы получили приглашение от\n:  $invite->name_or_company\n";
+      $email_body .= "Контактный номер: $invite->phone\n";
+      $email_body .= "Email: $invite->email\n";
+      $email_body .= "Сообщение: $invite->message";
+      $headers = "From: noreply@get-resume.pw\n"; // Откуда
+      $headers .= "Reply-To:  $invite->email";
 
        try{
 

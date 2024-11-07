@@ -43,6 +43,9 @@
               <p class="info-item">
                <?php echo "{$live_place}"; ?> 
               </p>
+              <blockquote>
+              <?php echo "{$about}"; ?> 
+              </blockquote>
         </div>
        
       </div>

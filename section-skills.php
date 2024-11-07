@@ -21,7 +21,7 @@
      
                 extract($skills_row);
 
-                echo "<div class='chip' title='{$description}'>";
+                echo "<div class='chip toolp' data-position='bottom' data-tooltip='{$description}' >";
                 echo " <i class='icofont-{$icon}'></i>";
                 echo "{$title}";
                 echo '</div>';

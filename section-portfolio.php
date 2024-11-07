@@ -39,10 +39,10 @@
           echo "<span class='card-title'>{$title}</span>
               </div>";
           echo "<div class='card-content'>
-                 <p class='info-item'> {$descript} </p>";
+                 <blockquote> {$descript} </blocquote>";
           echo "</div>";
           echo "<div class='card-action'>
-              <a href='{$link}' class='btn' target='_blank'>
+              <a href='{$link}' class='btn btn-large' target='_blank'>
               <i class='icofont-look'></i>
               просмотр
               </a>";
@@ -76,5 +76,9 @@
       
 </div>
 </div>
-
+<div class="container">
+    <div class="row">
+     <span class="print-date"></span> 
+    </div>
+</div>
 </section>

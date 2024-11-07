@@ -21,6 +21,18 @@
       while($edurow = $studies->fetch(PDO::FETCH_ASSOC)){
             extract($edurow);
 
+            $begin_edu_date = $edurow['period'];
+            $bed = explode("-", $begin_edu_date);
+            $b_e_y = $bed[0];
+            $b_e_m = $bed[1];
+            $b_e_d =  $bed[2];
+
+            $end_edu_date = $edurow['periodend'];
+            $eed = explode("-", $end_edu_date);
+            $e_e_y = $eed[0];
+            $e_e_m = $eed[1];
+            $e_e_d = $eed[2];
+
             echo " <h4 class='header count z-depth-2'> {$level} </h4>";
             echo "<div class='card z-depth-2 hoverable'>
                   <div class='card-content'>";
@@ -28,7 +40,13 @@
             echo "<b class='exp-prof'> {$facultet} </b>";
             echo "<br>";
             echo "<b> {$specialization} </b>";
-            echo "<p>{$period} - {$periodend}</p>";
+            echo "<p class='period'>";
+
+            echo $b_e_d . "." . $b_e_m . "." . $b_e_y;
+            echo " - ";
+            echo $e_e_d . "." . $e_e_m . "." . $e_e_y;
+          
+            echo  "</p>";
             echo "</div>
                   </div>";
       }

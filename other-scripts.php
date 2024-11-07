@@ -45,7 +45,10 @@
                $('.card-info .card').addClass('horizontal');
             }
         }, 500);
-                
+         
+        $(document).ready(function(){
+            $('.toolp').tooltip();
+        });
     </script>        
 <!--Owl Carousel-->
 <script src="libs/carousel/owl.carousel.min.js"></script>
