@@ -30,11 +30,10 @@ if($_POST)
 
      else{
 
-      $to = $resume->email; // Куда
+      $to = "{$email}"; // Куда
       $email_subject = "Новое приглашение на сайте:  get-resume.pw";
-      $email_body = "Вы получили приглашение от\n:  $invite->name_or_company\n";
+      $email_body = "Вы получили приглашение от:\n  $invite->name_or_company\n";
       $email_body .= "Контактный номер: $invite->phone\n";
-      $email_body .= "Email: $invite->email\n";
       $email_body .= "Сообщение: $invite->message";
       $headers = "From: noreply@get-resume.pw\n"; // Откуда
       $headers .= "Reply-To:  $invite->email";
@@ -42,6 +41,9 @@ if($_POST)
        try{
 
          $invite->inviteWrite(); 
+
+         mail($to,$email_subject,$email_body,$headers);
+
          echo '<script>
                  var toastHTML = "<h1>Кандидату отправлено приглашение на интервью</h1>";
                  M.toast({html: toastHTML});
@@ -83,7 +85,6 @@ if($_POST)
 <button class="btn btn-large send" type="submit">Пригласить
 <i class="icofont-paper-plane"></i>
 </button>
-<input class="btn btn-large" type="reset" value="сбросить">
 </div>
 
 </form>

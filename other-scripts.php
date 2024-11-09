@@ -40,9 +40,11 @@
             let w = window.innerWidth;
             if(w < 560){
                $('.card-info .card').removeClass('horizontal');
+               $('.footer-copyright .live-int').removeClass('right');
             }
             else{
                $('.card-info .card').addClass('horizontal');
+               $('.footer-copyright .live-int').addClass('right');
             }
         }, 500);
          

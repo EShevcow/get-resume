@@ -31,8 +31,29 @@
   </div>
   <div class="footer-copyright">
     <div class="container">
-      Edvard Shevcov Think Power © 2023-2024 
-    <a class="grey-text text-lighten-4 right" href="#!">Live Internet</a>
+      <div class="row">
+        <div class="col l9 s12">
+          <p class="copyright">Edvard Shevcov Think Power © 2023-2024 </p>
+        </div>
+        <div class="col l3 s12">
+          <!--LiveInternet counter-->
+<a class="live-int" href="https://www.liveinternet.ru/click"
+target="_blank"><img id="licnt0582" class="toolp" width="88" height="31" style="border:0" 
+data-position="top"
+data-tooltip="LiveInternet: Просмотры за 24 часа, посетителей за 24 часа и за сегодня"
+src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+alt=""/>
+</a>
+<script>(function(d,s){d.getElementById("licnt0582").src=
+"https://counter.yadro.ru/hit?t18.7;r"+escape(d.referrer)+
+((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+(s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+";h"+escape(d.title.substring(0,150))+";"+Math.random()})
+(document,screen)</script>
+<!--/LiveInternet-->
+        </div>
+      </div>
+  
     </div>
   </div>
 </footer>

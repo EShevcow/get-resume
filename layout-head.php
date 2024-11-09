@@ -50,7 +50,17 @@
         font-size: 1.1em;
         color: #42a5f5;
        }
- 
+       .overlay {
+        min-height: 500px;
+        padding: 50px 0 30px 0;
+        background-color: rgba(0, 0, 0, 0.7);
+       }
+       .footer-copyright .row{
+        margin-bottom: 0;
+       }
+       .live-int{
+        padding-top: 10px;
+      }
       /* Adaptate */
       @media screen and (max-width: 560px){
         html{
@@ -79,7 +89,7 @@
       .profession{
         font-size: 1em;
       }
-      
+     
     }
 </style>
 <!-- Jquery Library -->
