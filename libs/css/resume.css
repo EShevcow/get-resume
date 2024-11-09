@@ -1,0 +1,109 @@
+
+@font-face {
+   font-family: Arial, Helvetica, sans-serif;
+   src: url(libs/fonts/arial.ttf);
+ }
+ @font-face {
+   font-family: "IcoFont";
+   src: url(libs/icofont/fonts/icofont.ttf);
+ }
+ main{
+   font-family: Arial, Helvetica, sans-serif;
+ }
+ header, .portfolio{
+   padding: 2em 0 2em 0;
+    background: white;
+ }
+ .prof, .skills{
+   background: #e0e0e0;
+ }
+ .experience{
+   background: white;
+ }
+ .experience .card{
+   background: #e0e0e0;
+ }
+ h3{
+   margin: 0;
+ }
+ .horizontal{
+   background: #e0e0e0;
+ }
+ .card-image img{
+    height: 300px;
+ }
+ .info-item{
+  padding: 5px;
+  font-weight: 500;
+  font-size: 1.2em;
+  color: #42a5f5;
+}
+ .alert-danger{
+   padding: 10px 5px 10px 10px;
+    margin: 15px 0 10px 0;
+   text-transform: capitalize;
+   font-size: 1.5em;
+    border-radius: 3px;
+    box-shadow: #212121 3px;
+   color: white;
+    background: red;
+   font-weight: bold;
+ }
+ .alert-absent{
+    padding: 10px 5px 10px 10px;
+    margin: 1em 0 1em 0;
+   text-transform: capitalize;
+   color: white;
+    background: orange;
+   font-weight: bold;
+}
+ .alert-succes{
+    padding: 15px 10px 15px 15px;
+    margin: 1em 0 1em 0;
+   border-radius: 3px;
+   text-transform: capitalize;
+   font-size: 1.5em;
+    color: white;
+    background: yellowgreen;
+   font-weight: bold;
+ }
+
+ .skills{
+    padding: 2em 0 2em 0;
+ }
+ .skills .card-panel{
+   background: white;
+ }
+ .chip{
+   display: inline-flex;
+   flex-direction: row;
+   align-items: center;
+   gap: 5px;
+   font-size: 1em;
+   background: #222324;
+   color: white;
+ }
+ .chip:hover{
+   background: #42a5f5;
+   transition: all ease 0.5s;
+ }
+ .chip i{
+   font-family: 'IcoFont';
+ }
+ .character-counter{
+   color: white;
+   font-size: 1em!important;
+   font-weight: bold;
+ }
+ .stydi, .portfolio .card {
+   background: white;
+ }
+ .portfolio, .stydi .card{
+   background: #e0e0e0;
+ }
+
+ .print-date{
+   padding: 2em 0 1em 0;
+   font-size: 1.5em;
+   color: orangered;
+ }
