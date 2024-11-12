@@ -4,9 +4,9 @@
  class Connect 
  {
     private $host = 'localhost';
-    private $db_name = 'g97774s3_getres';
-    private $username = 'g97774s3_getres';
-    private $password = 'DW0!eK3F9x7A';
+    private $db_name = 'getresume';
+    private $username = 'root';
+    private $password = 'twerk153e';
     public $connect;
 
     function getConnect()

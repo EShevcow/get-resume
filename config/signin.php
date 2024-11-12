@@ -20,17 +20,18 @@
     $stmt = $pdo->prepare($query);
     $stmt->execute();
     $res = $stmt->fetch(\PDO::FETCH_ASSOC);
-
+    
    if($res){
 
-    $_SESSION['user']['id'] = $user['id'];
-    header('location: ../home.php');
+    $_SESSION['id'] = $res['id'];
+  
+    header("location: ../admin/profile.php");
 
    }
   else{
 
     $_SESSION['message'] = 'Неверный логин или пароль';
-    header('location: ../index.php');
+    header('location: ../admin/index.php');
 
    }
   

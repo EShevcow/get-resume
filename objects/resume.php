@@ -1,18 +1,24 @@
 <?php
 
 class Resume {
+
+  private $header;
   private $experience;
   private $skills;
   private $education;
   private $portfolio;
   private $invites;
 
-  public function __construct($experience, $skills, $education, $portfolio, $invites) {
+  public function __construct($header, $experience, $skills, $education, $portfolio, $invites) {
+      $this->header = $header;
       $this->experience = $experience;
       $this->skills = $skills;
       $this->education = $education;
       $this->portfolio = $portfolio;
       $this->invites = $invites;
+  }
+  public function getHeader(){
+    return $this->header;
   }
 
   public function getExperience() {
@@ -30,8 +36,13 @@ class Resume {
   public function getPortfolio() {
       return $this->portfolio;
   }
+
   public function getInvites() {
       return $this->invites;
+  }
+
+  public function setHeader($header){
+     $this->header = $header;
   }
 
   public function setExperience($experience) {
