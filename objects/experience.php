@@ -33,8 +33,9 @@ public function addExperience()
 
 public function readExperience()
 {
-    $query = "SELECT * FROM " . $this->works . " ";
+    $query = "SELECT * FROM works WHERE resume_id = ? ";
     $exp = $this->connect->prepare($query);
+    $exp->bindParam(1, $this->resume_id);
     $exp->execute();
 
     return $exp;
@@ -42,9 +43,10 @@ public function readExperience()
 
 public function countExperience()
 {
-  $query = "SELECT id FROM ". $this->works . " ";
+  $query = "SELECT id FROM works WHERE resume_id = ? ";
 
   $stmt = $this->connect->prepare($query);
+  $stmt->bindParam(1, $this->resume_id);
    
   $stmt->execute();
 

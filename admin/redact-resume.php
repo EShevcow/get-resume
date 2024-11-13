@@ -1,6 +1,5 @@
 <?php 
 
-  
   session_start();
   if (!$_SESSION['id']) {
      header('Location: index.php');
@@ -26,6 +25,8 @@
   $user->id = $_SESSION['id'];
   $hd->user_id = $_SESSION['id'];
   $hd->id = $id;
+ # $_SESSION['resume_id'] = $id;
+  setcookie('resume_id', $id, 0, "/");
   $user->readOneUser();
   $title_page = "Страница " . $user->fullname;
 ?>
@@ -48,9 +49,23 @@
     </style>
 </head>
 <body>
+
 <script src="../libs/js/jquery.js"></script> 
 <script src="../libs/js/materialize.min.js"></script> 
 <script src="../libs/js/script.js"></script> 
+
+
+<nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Logo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="expers.php">Experience</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">JavaScript</a></li>
+      </ul>
+    </div>
+  </nav>
+        
 
 <div class="container">
 <div class="row">

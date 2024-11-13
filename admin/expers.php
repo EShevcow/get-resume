@@ -1,5 +1,10 @@
 <?php 
-  
+   
+   session_start();
+   if (!$_SESSION['id']) {
+      header('Location: index.php');
+  }
+
   include_once '../config/connect.php';
   include_once '../objects/user.php';
   include_once '../objects/header.php';
@@ -12,6 +17,7 @@
   $user = new User($db, $fullname, $gender, $avatar, $login, $password, $dateborn);
   $exp = new Experience($db);
   $dt = new GetDate();
+  $exp->resume_id = $_COOKIE['resume_id'];
 
 ?>
 
@@ -20,56 +26,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="../libs/icofont/icofont.min.css">
     <title>Document</title>
 </head>
 <body>
+<nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Logo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="profile.php">Home</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">JavaScript</a></li>
+      </ul>
+    </div>
+  </nav>
 
-   <?php 
-
-    $user_info = $user->readInfo();
-    $count_users = $user->countAll();
-
-    function printuser($user_info, $count_users){
-      if($count_users > 0){
-        while($nfo = $user_info->fetch(PDO::FETCH_ASSOC)){
-           extract($nfo);
-
-           echo '<div>';
-           echo "<img src='../libs/img/{$avatar}' alt='avatar'>";
-           echo "<h3>{$fullname}</h3>";
-
-           if($gender == "man"){
-               echo '<b>Мужчина</b>';
-           }
-           else{
-               echo '<b>Женщина</b>';
-           }
-           echo "<p>{$login}</p>";
-           echo "<p>{$date_born}</p>";
-
-           echo '</div>';
-        }
-      }
-      else{
-        echo "<h1>Нет зарегистрированных пользователей</h1>";
-      }
-    }
-    
-    printuser($user_info, $count_users);
-
-   ?>
+<div class="container">
+  <div class="row">
+   <div class="col l12">
+  
 
    <?php 
      $works = $exp->readExperience();
-
-     function printexp($works){
+     $count = $exp->countExperience();
+     function printexp($works, $count){
+      if($count > 0){
         while($exps = $works->fetch(PDO::FETCH_ASSOC))
         {
              extract($exps);
   
-          echo '<div class="row">
-                 <div class="">
-                 <div class="card">
+          echo '<div class="card">
                  <div class="card-content">';
           echo "<b class='card-title'> {$comps} </b>";
           echo "<h5 class=''>
@@ -120,13 +107,24 @@
     </div>";
         
         }
+      }
+      else{
+       echo '<blockquote>Опыт работы отсутствует!</blockquote>';
+      }
      }
-     $strrl = printexp($works);
+     $strrl = printexp($works, $count);
      $user->addResume(null, $strrl, null, null, null, null);
 
      foreach($user->getResumes() as $resume){
           echo $resume->getExperience();
      }
    ?> 
+</div>
+</div>
+</div>
+
+<script src="../libs/js/jquery.js"></script> 
+<script src="../libs/js/materialize.min.js"></script> 
+<script src="../libs/js/script.js"></script> 
 </body>
 </html>

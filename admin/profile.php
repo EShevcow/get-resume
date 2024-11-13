@@ -6,9 +6,6 @@
      header('Location: index.php');
   }
 
-  // получаем ID пользователя
- # $id = isset($_GET["id"]) ? $_GET["id"] : die("ERROR: отсутствует ID.");
-
   include_once '../config/connect.php';
   include_once '../objects/user.php';
   include_once '../objects/header.php';
