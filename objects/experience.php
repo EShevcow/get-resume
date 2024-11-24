@@ -33,9 +33,10 @@ public function addExperience()
 
 public function readExperience()
 {
-    $query = "SELECT * FROM works WHERE resume_id = ? ";
+    $query = "SELECT * FROM works WHERE user_id = ? AND resume_id = ? ";
     $exp = $this->connect->prepare($query);
-    $exp->bindParam(1, $this->resume_id);
+    $exp->bindParam(1, $this->user_id);
+    $exp->bindParam(2, $this->resume_id);
     $exp->execute();
 
     return $exp;
@@ -43,11 +44,11 @@ public function readExperience()
 
 public function countExperience()
 {
-  $query = "SELECT id FROM works WHERE resume_id = ? ";
+  $query = "SELECT id FROM works WHERE user_id = ? AND resume_id = ? ";
 
   $stmt = $this->connect->prepare($query);
-  $stmt->bindParam(1, $this->resume_id);
-   
+  $stmt->bindParam(1, $this->user_id);
+  $stmt->bindParam(2, $this->resume_id);
   $stmt->execute();
 
   $num = $stmt->rowCount();
@@ -59,20 +60,23 @@ public function countExperience()
 
 public function readOneExp()
 {
-$query = "SELECT * FROM " . $this->works . " WHERE id = ? LIMIT 0,1";
-$stmt = $this->connect->prepare($query);
 
-$stmt->bindParam(1, $this->id);
-$stmt->execute();
+ $query = "SELECT * FROM " . $this->works . " WHERE id = ? AND user_id = ? AND resume_id = ?  LIMIT 0,1";
+ $stmt = $this->connect->prepare($query);
 
-$row = $stmt->fetch(PDO::FETCH_ASSOC);
+ $stmt->bindParam(1, $this->id);
+ $stmt->bindParam(2, $this->user_id);
+ $stmt->bindParam(3, $this->resume_id);
+ $stmt->execute();
 
-$this->comps = $row["comps"];
-$this->prof = $row["prof"];
-$this->descs = $row["descs"];
-$this->period = $row["period"];
-$this->period_end = $row["period_end"];
+ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
+ $this->comps = $row["comps"];
+ $this->prof = $row["prof"];
+ $this->descs = $row["descs"];
+ $this->category = $row['category'];
+ $this->period = $row["period"];
+ $this->period_end = $row["period_end"];
 
 }
 
@@ -81,7 +85,7 @@ public function updateOneExp()
 $query = "UPDATE " . $this->works . " SET 
 comps = '$this->comps', prof = '$this->prof', descs = '$this->descs',
 period = '$this->period', period_end = '$this->period_end'
-WHERE id = $this->id ";
+WHERE id = $this->id AND user_id = $this->user_id AND resume_id = $this->resume_id";
 // подготовка запроса
 $stmt = $this->connect->prepare($query);
 

@@ -4,6 +4,7 @@
    if (!$_SESSION['id']) {
       header('Location: index.php');
   }
+ 
 
   include_once '../config/connect.php';
   include_once '../objects/user.php';
@@ -17,7 +18,9 @@
   $user = new User($db, $fullname, $gender, $avatar, $login, $password, $dateborn);
   $exp = new Experience($db);
   $dt = new GetDate();
+  $exp->user_id = $_SESSION['id'];
   $exp->resume_id = $_COOKIE['resume_id'];
+ 
 
 ?>
 
@@ -55,7 +58,7 @@
         while($exps = $works->fetch(PDO::FETCH_ASSOC))
         {
              extract($exps);
-  
+           
           echo '<div class="card">
                  <div class="card-content">';
           echo "<b class='card-title'> {$comps} </b>";
@@ -118,6 +121,7 @@
      foreach($user->getResumes() as $resume){
           echo $resume->getExperience();
      }
+     
    ?> 
 </div>
 </div>

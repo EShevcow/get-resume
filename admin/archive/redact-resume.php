@@ -25,10 +25,16 @@
   $user->id = $_SESSION['id'];
   $hd->user_id = $_SESSION['id'];
   $hd->id = $id;
- # $_SESSION['resume_id'] = $id;
+
+  #$_SESSION['resume_id'] = $id;
   setcookie('resume_id', $id, 0, "/");
+
+  # костыль для ограничения доступа к разделу резюме другого пользователя 
+  # $resume_id = $_COOKIE['resume_id'] == $id ? $_COOKIE['resume_id'] : header("Location: profile.php");
+  
   $user->readOneUser();
   $title_page = "Страница " . $user->fullname;
+
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +71,7 @@
       </ul>
     </div>
   </nav>
-        
+     
 
 <div class="container">
 <div class="row">
