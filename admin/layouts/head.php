@@ -12,6 +12,38 @@
         #send-notif{
             display: none;
         }
+        @media (max-width: 768px) {
+        .wrapper {
+            grid-template-columns: auto;
+        }
+        .wrapper-left {
+            grid-template-columns: 1fr;
+        }
+        .body-bold, .label-bold {
+            font-size: 14px;
+        }
+        .card-horizontal .card__wrap {
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
+        }
+        .card-horizontal .card__wrap .card__image img {
+            width: 100%;
+            max-height: 350px;
+        }
+        }
+        @media (max-width: 540px) {
+        .card__action {
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
+            -webkit-box-align: start;
+                -ms-flex-align: start;
+                    align-items: flex-start;
+        }
+        }
     </style>
 </head>
 <body>

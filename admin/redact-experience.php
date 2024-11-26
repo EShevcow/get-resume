@@ -119,7 +119,7 @@ $title_page = "Редактирование опыта в:  " . $exp->comps;
                             </div>
                             <div class="input-field">
                                 <select class="input-field__select" name="category" id="sel1">
-                                    <option value="<?= $exp->category ?>" selected><?= $exp->category ?></option> 
+                                    <option value="" selected><?= $exp->category ?></option> 
                                     <option value="Другое">Другое</option>
                                     <option value="IT">IT</option>
                                     <option value="Производство">Производство</option>

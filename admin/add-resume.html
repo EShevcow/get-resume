@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="css/wirefigma.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="icofont/icofont.min.css">
+</head>
+<body>
+
+    <!--Start Navbar-->
+    <nav class="navbar header-nav"> 
+        <div class="navbar__wrap">   
+         <a href="#" class="brand-logo ">
+           <img src="img/logo.png" alt="Logo">
+         </a>
+          <ul class="navbar__menu">
+            <li>
+                <a href="profile.html">
+                    Профиль
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="icofont-exit"></i>  
+                    Exit
+                </a>
+            </li>
+          </ul>
+          <ul class="navbar-toggle">
+            <li>
+                <a href="#">
+                    <i class="icofont-exit"></i>  
+                    Exit
+                </a>
+              </li>
+          </ul>
+          <a class="navbar-burger" href="#">
+            <i class="icofont-navigation-menu"></i>
+          </a>
+        </div> 
+       </nav>
+       <!-- /End Navbar -->
+
+  <div class="wrapper-left">
+
+        <!-- Start Main Content -->
+        <main class="column">
+           
+            <!--Start Breadcrumb Nav-->
+            <div class="card-vertical">
+                 <div class="breadcrumb">
+                     <div class="breadcrumb__wrap">
+                        <a class="breadcrumb__link" href="#">
+                            <span class="bredcrumb__label">Профиль</span>
+                            <i class="icofont-rounded-right"></i>
+                        </a>
+                        <a class="breadcrumb__link breadcrumb__link_active" href="#">
+                            <span class="bredcrumb__label">Добавление Резюме</span>
+                        </a>
+                    </div>
+                </div> 
+            </div>  
+            <!--/End Breadcrumb Nav-->
+
+            <!--Start Profile Head-->
+            <!--/End Profile Head-->
+
+            <!--Start Resume Items-->
+            <div class="card-vertical">
+                <div class="card__wrap"> 
+                    <div class="card__text-block">
+                    <span class="body-text">Добавление Резюме</span>
+                    <form class="column" action="" method="post">
+                        <div class="input-field">
+                            <input class="input-field__input" id="prof" name="profession" type="text">
+                            <label class="input-field__label" for="prof">Целевая профессия</label>
+                        </div>
+                        <div class="input-field">
+                            <input class="input-field__input" id="phone" name="phone" type="tel">
+                            <label class="input-field__label" for="phpne">Номер телефона</label>
+                        </div>
+                        <div class="input-field">
+                            <input class="input-field__input" id="email" name="email" type="tel">
+                            <label class="input-field__label" for="email">Email</label>
+                        </div>
+                        <div class="input-field">
+                            <input class="input-field__input" id="mn" name="money" type="number">
+                            <label class="input-field__label" for="mn">Зарплатные ожидания</label>
+                        </div>
+                        <div class="input-field">
+                            <input class="input-field__input" id="lp" name="live_place" type="text">
+                            <label class="input-field__label" for="lp">Место жительства</label>
+                        </div>
+                        <div class="input-field">  
+                            <textarea class="input-field__textarea" name="about" placeholder="Коротко о себе"></textarea>
+                            <label class="input-field__label" for="about">О себе</label>
+                        </div> 
+                        <div class="card__action">
+                            <button class="btn primary get-bg get-border">
+                                <i class="icofont-plus"></i>
+                                <span class="body-bold">Добавить</span>
+                            </button> 
+                        </div>
+                    </form>  
+                 </div>
+               </div>
+            </div>
+            <!--/End Resume Items-->
+            
+        </main>
+        <!--/End Main Content-->
+
+        <!--Start Aside & Ads-->
+        <aside class="column">
+
+          <!--Start Ads Block-->
+          <div class="get-ads">
+            <div class="wireimage">
+                <div class="image__wrap">
+                   <img src="img/keyboard.jpg" alt="Image">
+                </div>
+               </div> 
+           </div>
+           <!--/End Ads Block-->
+
+        </aside>
+        <!--/End Aside -->
+        </div>
+
+ <!--Start Linq Scripts-->
+ <script src="js/jquery-3.6.4.js"></script>
+ <script src="js/wirefigma.js"></script>
+ <script src="js/script.js"></script>
+ <!--/End Linq Scripts-->
+</body>
+</html>

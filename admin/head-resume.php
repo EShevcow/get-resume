@@ -30,7 +30,7 @@
   #setcookie('resume_id', $id, 0, "/");
 
   # костыль для ограничения доступа к разделу резюме другого пользователя 
-   $resume_id = $_COOKIE['resume_id'] == $id ? $_COOKIE['resume_id'] : header("Location: profile.php");
+  # $resume_id = $_COOKIE['resume_id'] == $id ? $_COOKIE['resume_id'] : header("Location: profile.php");
   
   $user->readOneUser();
   $resums = $hd->readInfo();

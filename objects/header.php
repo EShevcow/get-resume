@@ -13,7 +13,20 @@ class Header {
       $this->connect = $db;
 
     }
+    
+   function addResume(){
+    $query = "INSERT INTO resume (id, fullname, phone, user_id, email, live_place, profession, avatar, money, about)
+        VALUES (NULL, $this->fullname, $this->phone, $this->user_id, $this->email, $this->live_place, 
+        $this->profession, $this->avatar, $this->money, $this->about)";
+
+      $res = $this->connect->prepare($query);
+      
+      $res->execute();
    
+      return $res;  
+
+   }
+
     function readInfo(){
         $query = "SELECT * FROM resume WHERE user_id = ?";
         $info = $this->connect->prepare($query);

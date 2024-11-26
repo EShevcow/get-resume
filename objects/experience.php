@@ -18,17 +18,22 @@ class Experience
 
 public function addExperience()
   {
-    $query = "INSERT INTO " . $this->works . "
-    (`id`, `comps`, `prof`, `descs`, `period`, `period_end`)
-    VALUES (NULL,'$this->comps', '$this->prof', '$this->desc','$this->period', '$this->period_end' )";
+    $query = "INSERT INTO" . $this->works . "
+    (id, comps, prof, category, descs, user_id, resume_id, `period`, period_end)
+    VALUES (NULL, $this->comps, $this->prof, $this->category, $this->descs, $this->user_id, $this->resume_id, $this->period, $this->period_end)";
 
-    $expadd = $this->connect->prepare($query);
+    $res = $this->connect->prepare($query);
+ 
+    #$res->execute();
 
-    if($expadd->execute()) {
-       return true;
-    } else {
-       return false;
-    }
+    #return $res;
+
+    if($res->execute()) {
+      return true;
+   } else {
+      return false;
+   }
+
 }
 
 public function readExperience()
@@ -83,7 +88,7 @@ public function readOneExp()
 public function updateOneExp()
 {
 $query = "UPDATE " . $this->works . " SET 
-comps = '$this->comps', prof = '$this->prof', descs = '$this->descs',
+comps = '$this->comps', prof = '$this->prof', category='$this->category', descs = '$this->descs',
 period = '$this->period', period_end = '$this->period_end'
 WHERE id = $this->id AND user_id = $this->user_id AND resume_id = $this->resume_id";
 // подготовка запроса

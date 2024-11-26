@@ -15,7 +15,7 @@
   $database = new Connect;
   $db = $database->getConnect();
 
-  $user = new User($db, $fullname, $gender, $avatar, $login, $password, $dateborn);
+  $user = new User($db);
   $exp = new Experience($db);
   $dt = new GetDate();
   
@@ -46,7 +46,7 @@
            
             <div class="sidenav">
                 <div class="sidenav__wrap">
-                    <a href="head-resume.php?id=<?= $_COOKIE['resume_id'] ?>" class="sidenav__item">
+                    <a href="head-resume.php?id=<?= $_SESSION['resume_id'] ?>" class="sidenav__item">
                         <span class="text-label">Главная</span>
                     </a>
                     
@@ -76,6 +76,17 @@
 
         <main class="column">
 
+        <div class="notif-block" id="send-notif">
+            <div class="notif-block__wrap notif-block__success">
+                <span class="large-icon">
+                    <i class="icofont-check-circled"></i>
+                </span>
+                <span class="text-body">
+                  Success
+                </span>
+            </div>
+        </div>   
+
           <!--Start Add Work-->
           <?php 
            if($count > 0){
@@ -84,8 +95,8 @@
                   <div class="card__text-block">
                     <span class="body-text">Добавить опыт работы</span>
                    
-                  <div class="card__action modal-trigger" id="openModalBtn">
-                    <a href="#" class="btn-round round-primary">
+                  <div class="card__action">
+                    <a href="add-experience.php" class="btn-round round-primary">
                         <i class="icofont-plus"></i> 
                     </a>
                   </div>
@@ -206,6 +217,36 @@
           
         </main>
     </div>
+  
+    <?php 
+     if($_POST) {
+      
+      $exp->comps = htmlspecialchars($_POST["comp"]);
+      $exp->category = htmlspecialchars($_POST["category"]);
+      $exp->prof = htmlspecialchars($_POST["prof"]);
+      $exp->descs = htmlspecialchars($_POST["desc"]);
+      $exp->user_id;
+      $exp->resume_id;
+      $exp->period = htmlspecialchars($_POST["fdate"]);
+      $exp->period_end = htmlspecialchars($_POST["edate"]);
+      
+      try{
+         $exp->addExperience();
+         echo "<script>
+                  setTimeout(() => {
+                 $('#send-notif').slideToggle();
+                  }, 3000);
+              </script>";
+      }
+      catch (Exception $e){
+        echo "<script>
+               alert('Error Add Experience');
+             </script>";
+      }
+    
+     
+     }
+    ?>
 
     <!--Start Modal Window-->
     <div class="modal" id="myModal">
@@ -215,7 +256,7 @@
           <div class="modal__body row">
             
           <!--Start Form Add-->
-           <form class="column" action="" method="post">
+           <form class="column" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
             
             <div class="input-field">
                 <input class="input-field__input get-input" id="txt" name="comp" type="text">
@@ -283,6 +324,7 @@
       <?php 
        include_once 'layouts/scripts.php';
       ?>
+  
       <!--/End Linq Scripts-->
 </body>
 </html>

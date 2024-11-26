@@ -210,7 +210,31 @@ if($count > 0){
         <!--/End Aside -->
         </div>
 <?php 
+  if($_POST){
 
+    $hd->profession = $_POST['profession'];
+    $hd->fullname = "Add";
+    $hd->phone = $_POST['phone'];
+    $hd->email = $_POST['email'];
+    $hd->money = $_POST['money'];
+    $hd->live_place = $_POST['live_place'];
+    $hd->about = $_POST['about'];
+    $hd->user_id;
+    $hd->avatar = "Avatar.jpg";
+
+    try{
+       $hd->addResume();
+       echo "<script>
+              alert('Резюме успешно добавлено!')
+             </script>";
+    }
+    catch (Exception $e){
+       echo "<script>
+              alert('Не удалось добавить резюме!')
+             </script>";
+    }
+     
+  }
 ?>
 
  <!--Start Modal Add Resume --> 
@@ -221,7 +245,7 @@ if($count > 0){
       <div class="modal__body row">
 
         <!--Start Form Add-->
-        <form class="column" action="" method="post">
+        <form class="column" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
             <div class="input-field">
                 <input class="input-field__input" id="prof" name="profession" type="text">
                 <label class="input-field__label" for="prof">Целевая профессия</label>

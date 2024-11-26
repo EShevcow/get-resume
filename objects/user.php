@@ -1,28 +1,13 @@
 <?php
 
-require_once 'resume.php';
-
 class User {
 
     private $connect;
-    private $resumes = [];
+   # private $resumes = [];
     private $users = "users";
 
-   # private $fullname;
-   # private $gender;
-   # private $avatar;
-   # private $login;
-   # private $password;
-   # private $date_born;
-   
     function __construct($db){
         $this->connect = $db;
-      #  $this->fullname = $fullname;
-      #  $this->gender = $gender;
-      #  $this->avatar = $avatar;
-      #  $this->login = $login;
-      #  $this->password = password_hash($password, PASSWORD_DEFAULT);
-      #  $this->date_born = $date_born;
     }
 
     function readInfo(){
@@ -64,42 +49,4 @@ class User {
         return $num;
      }
 
-    public function addResume($header, $experience, $skills, $education, $portfolio, $invites) {
-        $resume = new Resume($header, $experience, $skills, $education, $portfolio, $invites);
-        $this->resumes[] = $resume;
-    }
-
-    public function getResumes() {
-        return $this->resumes;
-    }
-
-    /*
-    public function getFullname() {
-        return $this->fullname;
-    }
-
-    public function getGender() {
-        return $this->gender;
-    }
-
-    public function getAvatar() {
-        return $this->avatar;
-    }
-
-    public function getLogin() {
-        return $this->login;
-    }
-
-    public function getDate_born(){
-        return $this->date_born;
-    }
-
-    public function setPassword($password) {
-        $this->password = password_hash($password, PASSWORD_DEFAULT);
-    }
-
-    public function verifyPassword($password) {
-        return password_verify($password, $this->password);
-    }
-   */
 }
