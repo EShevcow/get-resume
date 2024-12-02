@@ -23,6 +23,7 @@
   $hd->user_id = $_SESSION['id'];
   $user->readOneUser();
   $title_page = $user->fullname . " |" . " Список резюме";
+
 ?>
 
 <?php 
@@ -75,8 +76,11 @@
               if($user->gender == 'man'){
                    $gender = 'Мужчина';
               }
-              else{
+              else if($user->gender == 'woman'){
                  $gender = 'Женщина';
+              }
+              else{
+                 $gender = "Пол не указан";
               }
 
             ?>
@@ -115,8 +119,8 @@
             <!--Start Resume Items-->
             <?php 
 
-             $resums = $hd->readInfo();
-             $count = $hd->countResume();
+         $resums = $hd->readInfoRes();
+         $count = $hd->countResume();
 
     function printResums($resums, $count){
              if($count > 0){
@@ -172,6 +176,8 @@
             }
         
            printResums($resums, $count);
+
+          
            
         ?>
          

@@ -14,19 +14,25 @@ class Experience
 
   }
 
-
+/* Непонимаю какого черта собачего не получается сделать запись в БД!
+Все способы перепробовал ничего не помогает!! Уперлось рогом как баран */
 
 public function addExperience()
   {
     $query = "INSERT INTO" . $this->works . "
-    (id, comps, prof, category, descs, user_id, resume_id, `period`, period_end)
-    VALUES (NULL, $this->comps, $this->prof, $this->category, $this->descs, $this->user_id, $this->resume_id, $this->period, $this->period_end)";
+    (id, user_id, resume_id, category, comps, prof, descs, `period`, period_end)
+    VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $res = $this->connect->prepare($query);
- 
-    #$res->execute();
-
-    #return $res;
+    $res->bindParam(1, $this->user_id);
+    $res->bindParam(2, $this->resume_id);
+    $res->bindParam(3, $this->category);
+    $res->bindParam(4, $this->comps);
+    $res->bindParam(5, $this->prof);
+    $res->bindParam(6, $this->descs);
+    $res->bindParam(7, $this->period);
+    $res->bindParam(8, $this->period_end);
+    
 
     if($res->execute()) {
       return true;

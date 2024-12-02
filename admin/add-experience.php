@@ -98,23 +98,23 @@
                 $exp->descs = htmlspecialchars($_POST["desc"]);
                 $exp->user_id;
                 $exp->resume_id;
-                $exp->period = htmlspecialchars($_POST["start-date"]);
-                $exp->period_end = htmlspecialchars($_POST["end-date"]);
+                $exp->stat_date = htmlspecialchars($_POST["start-date"]);
+                $exp->end_end = htmlspecialchars($_POST["end-date"]);
                 
-               # try{
+                try{
 
                    # var_dump($exp->user_id);
                    # var_dump($exp->resume_id);
                    # var_dump($exp);
 
-                if($exp->addExperience()){
+                   $exp->addExperience();
                    echo "<script>
                             setTimeout(() => {
                            $('#send-notif').slideToggle();
                             }, 3000);
                         </script>";
                 }
-                else{
+                catch (Exception $e){
                 
                   echo "<script>
                          alert('Error Add Experience');

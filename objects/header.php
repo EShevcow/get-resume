@@ -3,7 +3,7 @@
 class Header {
 
     private $table = "resume";
-    private $user = "users";
+ #   private $user = "users";
     public $id;
     public $user_id;
 
@@ -25,9 +25,9 @@ class Header {
    
       return $res;  
 
-   }
+   } 
 
-    function readInfo(){
+    function readInfoRes(){
         $query = "SELECT * FROM resume WHERE user_id = ?";
         $info = $this->connect->prepare($query);
         $info->bindParam(1, $this->user_id);

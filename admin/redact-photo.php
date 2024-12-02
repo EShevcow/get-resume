@@ -33,7 +33,7 @@
   # $resume_id = $_COOKIE['resume_id'] == $id ? $_COOKIE['resume_id'] : header("Location: profile.php");
   
   $user->readOneUser();
-  $resums = $hd->readInfo();
+  $resums = $hd->readInfoRes();
   $res_inf = $resums->fetch(PDO::FETCH_ASSOC); 
   extract($res_inf);
 
